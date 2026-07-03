@@ -8519,3 +8519,81 @@ html {
         --hero-support-size: 1.35rem;
     }
 }
+
+/* Mobile responsiveness for Projects Served & Our Process section */
+@media (max-width: 992px) {
+    /* ── Projects Served Overrides ── */
+    .home-projects-wrapper {
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 8rem 1.5rem !important;
+        background: #161008 !important; /* Force elegant dark mode */
+        color: #fcfaf8 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .home-projects-wrapper svg,
+    .home-projects-wrapper .home-projects-hub {
+        display: none !important;
+    }
+
+    .home-projects-container {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 600px !important;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    .home-projects-container .architecture-node-card {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        opacity: 1 !important;
+        scale: 1 !important;
+        transform: none !important;
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(255, 119, 201, 0.18) !important;
+        color: #fcfaf8 !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+        padding: 2.2rem 1.8rem !important;
+    }
+
+    .home-projects-container .architecture-node-card h3 {
+        color: #fcfaf8 !important;
+    }
+
+    .home-projects-container .architecture-node-card p {
+        color: rgba(252, 250, 248, 0.7) !important;
+    }
+
+    /* ── Our Process / Use Cases Overrides ── */
+    .home__use-cases {
+        padding: 8rem 0 !important;
+    }
+
+    .home__use-cases .use-case-slide {
+        padding: 3rem 1.5rem 8rem 1.5rem !important; /* Bottom padding keeps navigation clear */
+    }
+
+    .home__use-cases p {
+        font-size: 1.3rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 2.5rem !important;
+    }
+
+    .home__use-cases h2 {
+        margin-bottom: 1.8rem !important;
+    }
+
+    .home__use-cases .home__use-cases__content__slide__left__navigation {
+        right: 16px !important;
+        bottom: 16px !important;
+    }
+}

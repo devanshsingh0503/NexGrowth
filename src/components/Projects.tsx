@@ -93,19 +93,21 @@ export default function Projects() {
     const hub = hubRef.current;
     if (!wrapper || !container || !hub) return;
 
-    // ── Initial layouts & micro-animations states ──
-    gsap.set(cardRefs.current, { scale: 0.95, opacity: 0 });
-    lineRefs.current.forEach(path => {
-      if (!path) return;
-      const length = path.getTotalLength();
-      gsap.set(path, {
-        strokeDasharray: length,
-        strokeDashoffset: length,
-      });
-    });
+    const mm = gsap.matchMedia();
 
-    const ctx = gsap.context(() => {
-      // ── Main Scroll-pinned Timeline ──
+    // ── Desktop Scroll-pinned Architecture diagram ──
+    mm.add("(min-width: 993px)", () => {
+      // Set initial state
+      gsap.set(cardRefs.current, { scale: 0.95, opacity: 0, x: 0, y: 0 });
+      lineRefs.current.forEach(path => {
+        if (!path) return;
+        const length = path.getTotalLength();
+        gsap.set(path, {
+          strokeDasharray: length,
+          strokeDashoffset: length,
+        });
+      });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: wrapper,
@@ -157,19 +159,16 @@ export default function Projects() {
       });
 
       // ── 55–75%: Continuous Theme Interpolation (Light -> Dark) ──
-      // Animate background color of the wrapper
       tl.to(wrapper, {
         backgroundColor: '#161008', // dark chocolate black
         ease: 'none',
       }, 0.55);
 
-      // Animate SVG path stroke colors
       tl.to(lineRefs.current, {
         stroke: 'var(--current-color-40)', // Pink accent
         ease: 'none',
       }, 0.55);
 
-      // Animate hub properties
       tl.to(hub, {
         borderColor: 'var(--current-color-40)',
         backgroundColor: 'rgba(255, 119, 201, 0.05)',
@@ -178,7 +177,6 @@ export default function Projects() {
         ease: 'none',
       }, 0.55);
 
-      // Animate cards properties
       cardRefs.current.forEach((card) => {
         if (!card) return;
         tl.to(card, {
@@ -211,24 +209,55 @@ export default function Projects() {
         ease: 'power2.in',
       }, 0.9);
 
-    }, wrapper);
-
-    // ── Micro-animations (independent floating y-axis drift) ──
-    const floatTimelines = cardRefs.current.map((card, idx) => {
-      if (!card) return null;
-      return gsap.to(card, {
-        y: '+=3',
-        rotation: (idx % 2 === 0 ? 0.3 : -0.3),
-        duration: 3 + (idx * 0.3),
-        yoyo: true,
-        repeat: -1,
-        ease: 'sine.inOut',
+      // Micro-floating drift
+      const floatTimelines = cardRefs.current.map((card, idx) => {
+        if (!card) return null;
+        return gsap.to(card, {
+          y: '+=3',
+          rotation: (idx % 2 === 0 ? 0.3 : -0.3),
+          duration: 3 + (idx * 0.3),
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut',
+        });
       });
+
+      return () => {
+        tl.scrollTrigger?.kill();
+        tl.kill();
+        floatTimelines.forEach(t => t?.kill());
+      };
+    });
+
+    // ── Mobile Grid Fade-in ──
+    mm.add("(max-width: 992px)", () => {
+      gsap.set(cardRefs.current, { scale: 1, opacity: 1, x: 0, y: 0 });
+
+      const mobileTriggers = cardRefs.current.map((card) => {
+        if (!card) return null;
+        return gsap.fromTo(card,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            }
+          }
+        );
+      });
+
+      return () => {
+        mobileTriggers.forEach(t => t?.scrollTrigger?.kill());
+      };
     });
 
     return () => {
-      ctx.revert();
-      floatTimelines.forEach(t => t?.kill());
+      mm.revert();
     };
   }, []);
 
@@ -236,6 +265,7 @@ export default function Projects() {
     <section
       ref={wrapperRef}
       id="portfolio"
+      className="home-projects-wrapper"
       style={{
         position: 'relative',
         height: '100vh',
@@ -251,6 +281,7 @@ export default function Projects() {
       {/* Centered Architecture Diagram Canvas */}
       <div
         ref={containerRef}
+        className="home-projects-container"
         style={{
           position: 'relative',
           width: '1200px',
@@ -290,6 +321,7 @@ export default function Projects() {
         {/* Central Hub Card */}
         <div
           ref={hubRef}
+          className="home-projects-hub"
           style={{
             position: 'absolute',
             width: '200px',
