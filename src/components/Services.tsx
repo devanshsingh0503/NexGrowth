@@ -303,7 +303,7 @@ export default function Services() {
               Service 01 // Web Design &amp; Development
             </p>
           </div>
-          <div ref={card1Ref} style={cardStyle}>
+          <div ref={card1Ref} className="services-card" style={cardStyle}>
             {/* Left */}
             <div>
               <h3 style={{ fontFamily: 'GT-Planar, Inter, sans-serif', fontSize: '3.6rem', fontWeight: 700, color: 'var(--text-primary, #2a0710)', marginBottom: '2rem', lineHeight: '1.1', transition: 'color 0.5s' }}>
@@ -317,7 +317,7 @@ export default function Services() {
               </a>
             </div>
             {/* Right (Browser Wireframe Mockup) */}
-            <div style={browserStyle}>
+            <div className="services-browser" style={browserStyle}>
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(24, 2, 6, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />
@@ -351,7 +351,7 @@ export default function Services() {
               Service 02 // Software Development for Business
             </p>
           </div>
-          <div ref={card2Ref} style={cardStyle}>
+          <div ref={card2Ref} className="services-card" style={cardStyle}>
             {/* Left */}
             <div>
               <h3 style={{ fontFamily: 'GT-Planar, Inter, sans-serif', fontSize: '3.6rem', fontWeight: 700, color: 'var(--text-primary, #2a0710)', marginBottom: '2rem', lineHeight: '1.1', transition: 'color 0.5s' }}>
@@ -365,7 +365,7 @@ export default function Services() {
               </a>
             </div>
             {/* Right (Browser SaaS Mockup) */}
-            <div style={browserStyle}>
+            <div className="services-browser" style={browserStyle}>
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(24, 2, 6, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />
@@ -399,7 +399,7 @@ export default function Services() {
               Service 03 // Mobile App Development
             </p>
           </div>
-          <div ref={card3Ref} style={cardStyle}>
+          <div ref={card3Ref} className="services-card" style={cardStyle}>
             {/* Left */}
             <div>
               <h3 style={{ fontFamily: 'GT-Planar, Inter, sans-serif', fontSize: '3.6rem', fontWeight: 700, color: 'var(--text-primary, #2a0710)', marginBottom: '2rem', lineHeight: '1.1', transition: 'color 0.5s' }}>
@@ -413,7 +413,7 @@ export default function Services() {
               </a>
             </div>
             {/* Right (Browser Mobile App Dashboard Mockup) */}
-            <div style={browserStyle}>
+            <div className="services-browser" style={browserStyle}>
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(24, 2, 6, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />
@@ -459,7 +459,7 @@ export default function Services() {
               Service 04 // Search Engine Optimisation
             </p>
           </div>
-          <div ref={card4Ref} style={cardStyle}>
+          <div ref={card4Ref} className="services-card" style={cardStyle}>
             {/* Left */}
             <div>
               <h3 style={{ fontFamily: 'GT-Planar, Inter, sans-serif', fontSize: '3.6rem', fontWeight: 700, color: 'var(--text-primary, #2a0710)', marginBottom: '2rem', lineHeight: '1.1', transition: 'color 0.5s' }}>
@@ -473,7 +473,7 @@ export default function Services() {
               </a>
             </div>
             {/* Right (Browser SEO Mockup) */}
-            <div style={browserStyle}>
+            <div className="services-browser" style={browserStyle}>
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(4, 38, 22, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />
@@ -526,7 +526,7 @@ export default function Services() {
               Service 05 // Google &amp; Meta Ads
             </p>
           </div>
-          <div ref={card5Ref} style={cardStyle}>
+          <div ref={card5Ref} className="services-card" style={cardStyle}>
             {/* Left */}
             <div>
               <h3 style={{ fontFamily: 'GT-Planar, Inter, sans-serif', fontSize: '3.6rem', fontWeight: 700, color: 'var(--text-primary, #2a0710)', marginBottom: '2rem', lineHeight: '1.1', transition: 'color 0.5s' }}>
@@ -540,7 +540,7 @@ export default function Services() {
               </a>
             </div>
             {/* Right (Browser Combined Google & Meta Ads Mockup) */}
-            <div style={browserStyle}>
+            <div className="services-browser" style={browserStyle}>
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(4, 38, 22, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />
@@ -581,7 +581,7 @@ export default function Services() {
               Service 06 // Social Media Marketing
             </p>
           </div>
-          <div ref={card6Ref} style={cardStyle}>
+          <div ref={card6Ref} className="services-card" style={cardStyle}>
             {/* Left */}
             <div>
               <h3 style={{ fontFamily: 'GT-Planar, Inter, sans-serif', fontSize: '3.6rem', fontWeight: 700, color: 'var(--text-primary, #2a0710)', marginBottom: '2rem', lineHeight: '1.1', transition: 'color 0.5s' }}>
@@ -595,7 +595,7 @@ export default function Services() {
               </a>
             </div>
             {/* Right (Browser SMM Mockup) */}
-            <div style={browserStyle}>
+            <div className="services-browser" style={browserStyle}>
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(4, 38, 22, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />

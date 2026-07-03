@@ -27,7 +27,7 @@ export default function HeroContent({ contentRef }: Props) {
         {/* Headline — Very large bold pink centered, tight line height */}
         <h1
           style={{
-            fontSize: 'min(7vw, 6.4rem)', // Large bold scale
+            fontSize: 'var(--hero-title-size, min(7vw, 6.4rem))', // Large bold scale with mobile variable fallback
             lineHeight: '0.95',
             fontFamily: 'GT-Planar, Inter, sans-serif',
             fontWeight: 700,
@@ -63,7 +63,7 @@ export default function HeroContent({ contentRef }: Props) {
           style={{
             display: 'inline-block',
             marginTop: '2.5rem',
-            fontSize: 'min(2vw, 1.45rem)',
+            fontSize: 'var(--hero-support-size, min(2vw, 1.45rem))',
             lineHeight: '1.5',
             maxWidth: '820px',
             color: 'rgba(252,250,248,0.70)',

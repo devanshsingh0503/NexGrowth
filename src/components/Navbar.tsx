@@ -234,12 +234,13 @@ export default function Navbar() {
         </button>
 
         {/* Center: Navigation Links */}
-        <nav style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
+        <nav className="nav-center-menu" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
           <ul style={{ display: 'flex', alignItems: 'center', gap: '8px', listStyle: 'none', margin: 0, padding: 0 }}>
             {navLinks.map(l => (
               <li key={l.href}>
                 <a
                   href={l.href}
+                  className={activeSection === l.href ? 'is-active' : ''}
                   style={{
                     position: 'relative',
                     color: activeSection === l.href ? navTheme.activeText : navTheme.text,
@@ -287,7 +288,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right: CTA Button */}
-        <div>
+        <div className="nav-right-cta">
           <a
             className="cta-button"
             href="#contact"

@@ -8460,3 +8460,62 @@ html {
     --shadow: 0 16px 64px rgba(42, 7, 16, 0.15);
     --glow: rgba(255, 100, 150, 0.05);
 }
+
+/* Mobile responsiveness for Services, Navbar, and Hero */
+@media (max-width: 992px) {
+    .services-wrapper section {
+        height: auto !important;
+        min-height: 100vh;
+        padding: 8rem 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .services-wrapper .services-card {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+        padding: 2.5rem 2rem !important;
+        border-radius: 20px !important;
+    }
+
+    .services-wrapper .services-browser {
+        height: 280px !important;
+    }
+
+    .services-wrapper h3 {
+        font-size: 2.6rem !important;
+        margin-bottom: 1.2rem !important;
+    }
+
+    .services-wrapper p {
+        font-size: 1.3rem !important;
+        margin-bottom: 2rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-center-menu {
+        display: none !important;
+    }
+    
+    .header-pill {
+        width: 92vw !important;
+        max-width: 92vw !important;
+        padding: 0 16px !important;
+    }
+
+    .header-pill svg {
+        width: 120px !important;
+    }
+
+    .nav-right-cta a {
+        padding: 0.8rem 1.6rem !important;
+        font-size: 1.15rem !important;
+    }
+
+    :root {
+        --hero-title-size: 3.4rem;
+        --hero-support-size: 1.35rem;
+    }
+}
