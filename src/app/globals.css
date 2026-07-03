@@ -8697,4 +8697,17 @@ html {
     .nav-right-cta {
         display: none !important;
     }
+    .mobile-floating-cta {
+        display: flex !important;
+    }
+}
+
+/* Floating Book a call styling and click effects */
+.mobile-floating-cta {
+    display: none !important;
+}
+
+.mobile-floating-cta:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 16px rgba(255, 119, 168, 0.25) !important;
 }
