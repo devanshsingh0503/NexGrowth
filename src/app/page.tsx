@@ -49,7 +49,6 @@ export default function Page() {
           fontFamily: 'GT-Planar, Inter, sans-serif',
           fontSize: '1.25rem',
           fontWeight: 700,
-          display: 'none', // Overridden in globals.css media queries to flex
           alignItems: 'center',
           gap: '8px',
           transition: 'transform 0.2s ease, box-shadow 0.2s ease',
