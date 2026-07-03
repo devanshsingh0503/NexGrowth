@@ -21,6 +21,10 @@ interface ThemeConfig {
   ctaBorder: string;
   logo: string;
   shadow: string;
+  floatingBg: string;
+  floatingText: string;
+  floatingBorder: string;
+  floatingShadow: string;
 }
 
 const defaultTheme: ThemeConfig = {
@@ -34,6 +38,10 @@ const defaultTheme: ThemeConfig = {
   ctaBorder: '1px solid rgba(255, 255, 255, 0.15)',
   logo: 'var(--current-color-40)',
   shadow: '0 8px 32px 0 rgba(0, 0, 0, 0.35)',
+  floatingBg: '#ff77a8',
+  floatingText: '#161008',
+  floatingBorder: 'none',
+  floatingShadow: '0 8px 32px rgba(255, 119, 168, 0.45)',
 };
 
 const themes: ThemeConfig[] = [
@@ -49,6 +57,10 @@ const themes: ThemeConfig[] = [
     ctaBorder: '1px solid rgba(255, 255, 255, 0.15)',
     logo: 'var(--current-color-40)',
     shadow: '0 8px 32px 0 rgba(0, 0, 0, 0.35)',
+    floatingBg: '#ff77a8',
+    floatingText: '#161008',
+    floatingBorder: 'none',
+    floatingShadow: '0 8px 32px rgba(255, 119, 168, 0.45)',
   },
   // 1. About (Pink background -> dark chocolate navbar)
   {
@@ -62,6 +74,10 @@ const themes: ThemeConfig[] = [
     ctaBorder: 'none',
     logo: 'var(--current-color-40)',
     shadow: '0 12px 40px rgba(0, 0, 0, 0.45)',
+    floatingBg: '#322312',
+    floatingText: '#fcfaf8',
+    floatingBorder: 'none',
+    floatingShadow: '0 8px 32px rgba(0, 0, 0, 0.35)',
   },
   // 2. Services - Burgundy Theme (Software Dev)
   {
@@ -75,6 +91,10 @@ const themes: ThemeConfig[] = [
     ctaBorder: 'none',
     logo: '#ff77a8',
     shadow: '0 12px 48px rgba(0, 0, 0, 0.5)',
+    floatingBg: '#ffdce2',
+    floatingText: '#180206',
+    floatingBorder: 'none',
+    floatingShadow: '0 8px 32px rgba(255, 220, 226, 0.3)',
   },
   // 3. Services - Emerald Green Theme (Digital Marketing)
   {
@@ -88,6 +108,10 @@ const themes: ThemeConfig[] = [
     ctaBorder: 'none',
     logo: '#86e897',
     shadow: '0 12px 48px rgba(0, 0, 0, 0.5)',
+    floatingBg: '#86e897',
+    floatingText: '#112313',
+    floatingBorder: 'none',
+    floatingShadow: '0 8px 32px rgba(134, 232, 151, 0.35)',
   },
   // 4. Why NexGrowth & Process (Lavender/purple background -> dark purple navbar)
   {
@@ -101,6 +125,10 @@ const themes: ThemeConfig[] = [
     ctaBorder: 'none',
     logo: '#D778F8',
     shadow: '0 12px 48px rgba(0, 0, 0, 0.5)',
+    floatingBg: '#ECDDFC',
+    floatingText: '#410060',
+    floatingBorder: 'none',
+    floatingShadow: '0 8px 32px rgba(236, 221, 252, 0.3)',
   },
 ];
 
@@ -431,13 +459,11 @@ export default function Navbar() {
           bottom: '24px',
           right: '24px',
           zIndex: 9999,
-          background: navTheme.ctaBg,
-          color: navTheme.ctaText,
+          background: navTheme.floatingBg,
+          color: navTheme.floatingText,
           padding: '1.2rem 2rem',
           borderRadius: '9999px',
-          boxShadow: navTheme.id?.includes('light')
-            ? '0 8px 32px rgba(255, 119, 168, 0.4)'
-            : '0 8px 32px rgba(0, 0, 0, 0.5)',
+          boxShadow: navTheme.floatingShadow,
           textDecoration: 'none',
           fontFamily: 'GT-Planar, Inter, sans-serif',
           fontSize: '1.25rem',
@@ -445,14 +471,14 @@ export default function Navbar() {
           alignItems: 'center',
           gap: '8px',
           transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-          border: navTheme.ctaBorder || '1px solid rgba(255, 255, 255, 0.1)',
+          border: navTheme.floatingBorder,
         }}
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z" stroke={navTheme.ctaText} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'stroke 0.5s ease' }} />
-          <path d="M16 2V6" stroke={navTheme.ctaText} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'stroke 0.5s ease' }} />
-          <path d="M8 2V6" stroke={navTheme.ctaText} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'stroke 0.5s ease' }} />
-          <path d="M3 10H21" stroke={navTheme.ctaText} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'stroke 0.5s ease' }} />
+          <path d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z" stroke={navTheme.floatingText} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'stroke 0.5s ease' }} />
+          <path d="M16 2V6" stroke={navTheme.floatingText} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'stroke 0.5s ease' }} />
+          <path d="M8 2V6" stroke={navTheme.floatingText} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'stroke 0.5s ease' }} />
+          <path d="M3 10H21" stroke={navTheme.floatingText} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'stroke 0.5s ease' }} />
         </svg>
         <span>Book a Call</span>
       </a>
