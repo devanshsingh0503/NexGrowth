@@ -8673,3 +8673,28 @@ html {
         bottom: 2.2rem !important;
     }
 }
+
+/* ── Mobile Hamburger & Keyframe animations ── */
+.nav-mobile-toggle {
+    display: none !important;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-mobile-toggle {
+        display: flex !important;
+    }
+    .nav-right-cta {
+        display: none !important;
+    }
+}
