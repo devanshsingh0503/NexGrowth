@@ -27,7 +27,7 @@ export function useHeroScroll(
     if (!wrapper || !topShape || !botShape || !content) return;
 
     const headline = content.querySelector('h1');
-    const subtext  = content.querySelector('span');
+    const subtext  = content.querySelector('.hero-support');
     const button   = content.querySelector('.home__hero-button');
 
     // ── Setup Hardware Acceleration Layers ───────────────────────────
