@@ -8520,13 +8520,27 @@ html {
     }
 }
 
+/* Base Use Case Card styles (reset on desktop) */
+.use-case-card {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
 /* Mobile responsiveness for Projects Served & Our Process section */
 @media (max-width: 992px) {
     /* ── Projects Served Overrides ── */
     .home-projects-wrapper {
         height: auto !important;
         min-height: 100vh !important;
-        padding: 8rem 1.5rem !important;
+        padding: 6rem 1.5rem !important;
         background: #161008 !important; /* Force elegant dark mode */
         color: #fcfaf8 !important;
         display: flex !important;
@@ -8540,6 +8554,26 @@ html {
         display: none !important;
     }
 
+    /* High-impact mobile Projects header */
+    .home-projects-header {
+        margin: 0 auto 3.5rem auto !important;
+        padding: 0 1rem !important;
+        text-align: center !important;
+    }
+
+    .home-projects-header span {
+        font-size: 0.95rem !important;
+        letter-spacing: 0.15em !important;
+        color: var(--accent, #ff77c9) !important;
+    }
+
+    .home-projects-header h2 {
+        font-size: 2.2rem !important;
+        line-height: 1.2 !important;
+        color: #fcfaf8 !important;
+        font-weight: 700 !important;
+    }
+
     .home-projects-container {
         width: 100% !important;
         height: auto !important;
@@ -8547,6 +8581,7 @@ html {
         display: grid !important;
         grid-template-columns: 1fr !important;
         gap: 2rem !important;
+        counter-reset: project-counter; /* Initialize CSS counter for mobile index numbering */
     }
 
     .home-projects-container .architecture-node-card {
@@ -8558,15 +8593,41 @@ html {
         opacity: 1 !important;
         scale: 1 !important;
         transform: none !important;
-        background: rgba(255, 255, 255, 0.03) !important;
-        border: 1px solid rgba(255, 119, 201, 0.18) !important;
+        background: rgba(255, 255, 255, 0.02) !important;
+        border: 1px solid rgba(255, 119, 201, 0.12) !important;
         color: #fcfaf8 !important;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
         padding: 2.2rem 1.8rem !important;
+        border-radius: 20px !important;
+        counter-increment: project-counter;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    /* Add beautiful Mono Index Number */
+    .home-projects-container .architecture-node-card::before {
+        content: "0" counter(project-counter);
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        font-family: ABCReproMono, monospace;
+        font-size: 0.95rem;
+        color: var(--accent, #ff77c9);
+        opacity: 0.85;
+        font-weight: 500;
+    }
+
+    /* Tapping/hovering active card glow effect */
+    .home-projects-container .architecture-node-card:hover,
+    .home-projects-container .architecture-node-card:active {
+        border-color: var(--accent, #ff77c9) !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        box-shadow: 0 12px 40px rgba(255, 119, 201, 0.22) !important;
+        transform: translateY(-4px) !important;
     }
 
     .home-projects-container .architecture-node-card h3 {
         color: #fcfaf8 !important;
+        margin-right: 2rem !important; /* Make room for index number */
     }
 
     .home-projects-container .architecture-node-card p {
@@ -8579,21 +8640,36 @@ html {
     }
 
     .home__use-cases .use-case-slide {
-        padding: 3rem 1.5rem 8rem 1.5rem !important; /* Bottom padding keeps navigation clear */
+        padding: 1.5rem 1rem !important; /* Outer padding reduced */
+    }
+
+    /* Square round shaped cards for mobile */
+    .home__use-cases .use-case-card {
+        background: var(--card-bg) !important;
+        border: 1px solid var(--card-border) !important;
+        border-radius: 32px !important; /* Square round shape */
+        padding: 3.5rem 2.2rem 8.5rem 2.2rem !important;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        transition: all 0.5s ease;
     }
 
     .home__use-cases p {
-        font-size: 1.3rem !important;
-        line-height: 1.5 !important;
+        font-size: 1.25rem !important;
+        line-height: 1.55 !important;
         margin-bottom: 2.5rem !important;
     }
 
     .home__use-cases h2 {
+        font-size: 2.2rem !important;
         margin-bottom: 1.8rem !important;
     }
 
     .home__use-cases .home__use-cases__content__slide__left__navigation {
-        right: 16px !important;
-        bottom: 16px !important;
+        right: 2.2rem !important;
+        bottom: 2.2rem !important;
     }
 }

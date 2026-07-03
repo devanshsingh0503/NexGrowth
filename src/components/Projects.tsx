@@ -79,6 +79,7 @@ export default function Projects() {
   const wrapperRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const hubRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const lineRefs = useRef<(SVGPathElement | null)[]>([]);
 
@@ -177,6 +178,15 @@ export default function Projects() {
         ease: 'none',
       }, 0.55);
 
+      // Animate header title text color
+      const h2 = headerRef.current?.querySelector('h2');
+      if (h2) {
+        tl.to(h2, {
+          color: '#fcfaf8',
+          ease: 'none',
+        }, 0.55);
+      }
+
       cardRefs.current.forEach((card) => {
         if (!card) return;
         tl.to(card, {
@@ -273,11 +283,54 @@ export default function Projects() {
         background: '#ECDDFC', // Initial warm light lavender
         overflow: 'hidden',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         transition: 'background-color 0.5s ease',
       }}
     >
+      {/* High-impact Section Header to highlight entrance */}
+      <div 
+        ref={headerRef} 
+        className="home-projects-header" 
+        style={{ 
+          width: '100%', 
+          maxWidth: '1200px', 
+          margin: '0 auto 4rem auto', 
+          padding: '0 2rem', 
+          textAlign: 'center',
+          zIndex: 5 
+        }}
+      >
+        <span 
+          style={{ 
+            fontFamily: 'ABCReproMono, monospace', 
+            fontSize: '1.1rem', 
+            letterSpacing: '0.15em', 
+            textTransform: 'uppercase', 
+            color: 'var(--current-color-40, #ff77c9)', 
+            display: 'block', 
+            marginBottom: '1rem' 
+          }}
+        >
+          Projects Served // Portfolio
+        </span>
+        <h2 
+          style={{ 
+            fontFamily: 'GT-Planar, Inter, sans-serif', 
+            fontSize: 'clamp(2.4rem, 4.5vw, 4.2rem)', 
+            fontWeight: 700, 
+            lineHeight: 1.15, 
+            color: '#410060', 
+            maxWidth: '900px',
+            margin: '0 auto',
+            transition: 'color 0.5s ease' 
+          }}
+        >
+          Bespoke engineering for high-growth brands.
+        </h2>
+      </div>
+
       {/* Centered Architecture Diagram Canvas */}
       <div
         ref={containerRef}

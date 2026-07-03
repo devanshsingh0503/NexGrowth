@@ -96,194 +96,200 @@ export default function UseCases() {
             
             {/* Slide 0: Other Agencies (Dark) */}
             <div className="use-case-slide anim-slide" style={{ minWidth: '100%', padding: '4rem 2rem' }}>
-              <div 
-                className="home__use-cases__content__slide__left__tag"
-                style={{
-                  display: 'inline-block',
-                  border: `1px solid ${isLight ? 'rgba(65, 0, 96, 0.2)' : 'rgba(236, 221, 252, 0.2)'}`,
-                  background: isLight ? 'rgba(65, 0, 96, 0.04)' : 'rgba(236, 221, 252, 0.03)',
-                  padding: '4px 12px',
-                  borderRadius: '6px',
-                  fontFamily: 'monospace',
-                  fontSize: '1.15rem',
-                  textTransform: 'uppercase',
-                  color: textColor,
-                  marginBottom: '2.5rem',
-                  transition: 'all 0.5s ease',
-                }}
-              >
-                <span>Other Agencies</span>
+              <div className="use-case-card" style={{ '--card-bg': isLight ? 'rgba(65, 0, 96, 0.03)' : 'rgba(255, 255, 255, 0.02)', '--card-border': isLight ? 'rgba(65, 0, 96, 0.08)' : 'rgba(255, 255, 255, 0.06)' } as React.CSSProperties}>
+                <div 
+                  className="home__use-cases__content__slide__left__tag"
+                  style={{
+                    display: 'inline-block',
+                    border: `1px solid ${isLight ? 'rgba(65, 0, 96, 0.2)' : 'rgba(236, 221, 252, 0.2)'}`,
+                    background: isLight ? 'rgba(65, 0, 96, 0.04)' : 'rgba(236, 221, 252, 0.03)',
+                    padding: '4px 12px',
+                    borderRadius: '6px',
+                    fontFamily: 'monospace',
+                    fontSize: '1.15rem',
+                    textTransform: 'uppercase',
+                    color: textColor,
+                    marginBottom: '2.5rem',
+                    transition: 'all 0.5s ease',
+                  }}
+                >
+                  <span>Other Agencies</span>
+                </div>
+                <h2
+                  style={{
+                    fontFamily: 'GT-Planar, Inter, sans-serif',
+                    fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    color: textColor,
+                    marginBottom: '2.4rem',
+                    maxWidth: '820px',
+                    transition: 'color 0.5s ease',
+                  }}
+                >
+                  Why settle for less with traditional agencies?
+                </h2>
+                <p
+                  style={{
+                    fontFamily: 'GT-Planar, Inter, sans-serif',
+                    fontSize: '1.7rem',
+                    lineHeight: 1.6,
+                    color: bodyColor,
+                    marginBottom: '3.6rem',
+                    maxWidth: '720px',
+                    transition: 'color 0.5s ease',
+                  }}
+                >
+                  Traditional agencies often build generic, template-based solutions that fail to address your business context. With poor collaboration, slow and unstructured processes, a limited understanding of your brand, and no support after delivery, projects quickly fall behind schedule and fail to achieve growth.
+                </p>
+                <a 
+                  className="cta-button" 
+                  href="#contact"
+                  style={{
+                    background: '#ff77c9', // Brand pink
+                    color: '#161008',
+                    border: 'none',
+                    borderRadius: '9999px',
+                    padding: '1.2rem 2.8rem',
+                    fontSize: '1.3rem',
+                    display: 'inline-block',
+                  }}
+                >
+                  <div className="cta-button__text"><span>Request Quote</span></div>
+                </a>
               </div>
-              <h2
-                style={{
-                  fontFamily: 'GT-Planar, Inter, sans-serif',
-                  fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
-                  fontWeight: 700,
-                  lineHeight: 1.1,
-                  color: textColor,
-                  marginBottom: '2.4rem',
-                  maxWidth: '820px',
-                  transition: 'color 0.5s ease',
-                }}
-              >
-                Why settle for less with traditional agencies?
-              </h2>
-              <p
-                style={{
-                  fontFamily: 'GT-Planar, Inter, sans-serif',
-                  fontSize: '1.7rem',
-                  lineHeight: 1.6,
-                  color: bodyColor,
-                  marginBottom: '3.6rem',
-                  maxWidth: '720px',
-                  transition: 'color 0.5s ease',
-                }}
-              >
-                Traditional agencies often build generic, template-based solutions that fail to address your business context. With poor collaboration, slow and unstructured processes, a limited understanding of your brand, and no support after delivery, projects quickly fall behind schedule and fail to achieve growth.
-              </p>
-              <a 
-                className="cta-button" 
-                href="#contact"
-                style={{
-                  background: '#ff77c9', // Brand pink
-                  color: '#161008',
-                  border: 'none',
-                  borderRadius: '9999px',
-                  padding: '1.2rem 2.8rem',
-                  fontSize: '1.3rem',
-                  display: 'inline-block',
-                }}
-              >
-                <div className="cta-button__text"><span>Request Quote</span></div>
-              </a>
             </div>
 
             {/* Slide 1: The NexGrowth Difference (Light) */}
             <div className="use-case-slide anim-slide" style={{ minWidth: '100%', padding: '4rem 2rem' }}>
-              <div 
-                className="home__use-cases__content__slide__left__tag"
-                style={{
-                  display: 'inline-block',
-                  border: `1px solid ${isLight ? 'rgba(65, 0, 96, 0.2)' : 'rgba(236, 221, 252, 0.2)'}`,
-                  background: isLight ? 'rgba(65, 0, 96, 0.04)' : 'rgba(236, 221, 252, 0.03)',
-                  padding: '4px 12px',
-                  borderRadius: '6px',
-                  fontFamily: 'monospace',
-                  fontSize: '1.15rem',
-                  textTransform: 'uppercase',
-                  color: textColor,
-                  marginBottom: '2.5rem',
-                  transition: 'all 0.5s ease',
-                }}
-              >
-                <span>The NexGrowth Difference</span>
+              <div className="use-case-card" style={{ '--card-bg': isLight ? 'rgba(65, 0, 96, 0.03)' : 'rgba(255, 255, 255, 0.02)', '--card-border': isLight ? 'rgba(65, 0, 96, 0.08)' : 'rgba(255, 255, 255, 0.06)' } as React.CSSProperties}>
+                <div 
+                  className="home__use-cases__content__slide__left__tag"
+                  style={{
+                    display: 'inline-block',
+                    border: `1px solid ${isLight ? 'rgba(65, 0, 96, 0.2)' : 'rgba(236, 221, 252, 0.2)'}`,
+                    background: isLight ? 'rgba(65, 0, 96, 0.04)' : 'rgba(236, 221, 252, 0.03)',
+                    padding: '4px 12px',
+                    borderRadius: '6px',
+                    fontFamily: 'monospace',
+                    fontSize: '1.15rem',
+                    textTransform: 'uppercase',
+                    color: textColor,
+                    marginBottom: '2.5rem',
+                    transition: 'all 0.5s ease',
+                  }}
+                >
+                  <span>The NexGrowth Difference</span>
+                </div>
+                <h2
+                  style={{
+                    fontFamily: 'GT-Planar, Inter, sans-serif',
+                    fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    color: textColor,
+                    marginBottom: '2.4rem',
+                    maxWidth: '820px',
+                    transition: 'color 0.5s ease',
+                  }}
+                >
+                  Custom digital solutions engineered for growth.
+                </h2>
+                <p
+                  style={{
+                    fontFamily: 'GT-Planar, Inter, sans-serif',
+                    fontSize: '1.7rem',
+                    lineHeight: 1.6,
+                    color: bodyColor,
+                    marginBottom: '3.6rem',
+                    maxWidth: '720px',
+                    transition: 'color 0.5s ease',
+                  }}
+                >
+                  At NexGrowth, we believe great products are engineered, not improvised. We stand for quick and clear communication, custom-built digital solutions tailored to your goals, a transparent process with firm timelines, and deep brand/UX research. Plus, we offer free post-launch maintenance to keep your site optimized.
+                </p>
+                <a 
+                  className="cta-button" 
+                  href="#contact"
+                  style={{
+                    background: '#ff77c9',
+                    color: '#161008',
+                    border: 'none',
+                    borderRadius: '9999px',
+                    padding: '1.2rem 2.8rem',
+                    fontSize: '1.3rem',
+                    display: 'inline-block',
+                  }}
+                >
+                  <div className="cta-button__text"><span>Request Quote</span></div>
+                </a>
               </div>
-              <h2
-                style={{
-                  fontFamily: 'GT-Planar, Inter, sans-serif',
-                  fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
-                  fontWeight: 700,
-                  lineHeight: 1.1,
-                  color: textColor,
-                  marginBottom: '2.4rem',
-                  maxWidth: '820px',
-                  transition: 'color 0.5s ease',
-                }}
-              >
-                Custom digital solutions engineered for growth.
-              </h2>
-              <p
-                style={{
-                  fontFamily: 'GT-Planar, Inter, sans-serif',
-                  fontSize: '1.7rem',
-                  lineHeight: 1.6,
-                  color: bodyColor,
-                  marginBottom: '3.6rem',
-                  maxWidth: '720px',
-                  transition: 'color 0.5s ease',
-                }}
-              >
-                At NexGrowth, we believe great products are engineered, not improvised. We stand for quick and clear communication, custom-built digital solutions tailored to your goals, a transparent process with firm timelines, and deep brand/UX research. Plus, we offer free post-launch maintenance to keep your site optimized.
-              </p>
-              <a 
-                className="cta-button" 
-                href="#contact"
-                style={{
-                  background: '#ff77c9',
-                  color: '#161008',
-                  border: 'none',
-                  borderRadius: '9999px',
-                  padding: '1.2rem 2.8rem',
-                  fontSize: '1.3rem',
-                  display: 'inline-block',
-                }}
-              >
-                <div className="cta-button__text"><span>Request Quote</span></div>
-              </a>
             </div>
 
             {/* Slide 2: Why NexGrowth (Light) */}
             <div className="use-case-slide anim-slide" style={{ minWidth: '100%', padding: '4rem 2rem' }}>
-              <div 
-                className="home__use-cases__content__slide__left__tag"
-                style={{
-                  display: 'inline-block',
-                  border: `1px solid ${isLight ? 'rgba(65, 0, 96, 0.2)' : 'rgba(236, 221, 252, 0.2)'}`,
-                  background: isLight ? 'rgba(65, 0, 96, 0.04)' : 'rgba(236, 221, 252, 0.03)',
-                  padding: '4px 12px',
-                  borderRadius: '6px',
-                  fontFamily: 'monospace',
-                  fontSize: '1.15rem',
-                  textTransform: 'uppercase',
-                  color: textColor,
-                  marginBottom: '2.5rem',
-                  transition: 'all 0.5s ease',
-                }}
-              >
-                <span>Why NexGrowth</span>
+              <div className="use-case-card" style={{ '--card-bg': isLight ? 'rgba(65, 0, 96, 0.03)' : 'rgba(255, 255, 255, 0.02)', '--card-border': isLight ? 'rgba(65, 0, 96, 0.08)' : 'rgba(255, 255, 255, 0.06)' } as React.CSSProperties}>
+                <div 
+                  className="home__use-cases__content__slide__left__tag"
+                  style={{
+                    display: 'inline-block',
+                    border: `1px solid ${isLight ? 'rgba(65, 0, 96, 0.2)' : 'rgba(236, 221, 252, 0.2)'}`,
+                    background: isLight ? 'rgba(65, 0, 96, 0.04)' : 'rgba(236, 221, 252, 0.03)',
+                    padding: '4px 12px',
+                    borderRadius: '6px',
+                    fontFamily: 'monospace',
+                    fontSize: '1.15rem',
+                    textTransform: 'uppercase',
+                    color: textColor,
+                    marginBottom: '2.5rem',
+                    transition: 'all 0.5s ease',
+                  }}
+                >
+                  <span>Why NexGrowth</span>
+                </div>
+                <h2
+                  style={{
+                    fontFamily: 'GT-Planar, Inter, sans-serif',
+                    fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    color: textColor,
+                    marginBottom: '2.4rem',
+                    maxWidth: '820px',
+                    transition: 'color 0.5s ease',
+                  }}
+                >
+                  Detailed process over guesswork.
+                </h2>
+                <p
+                  style={{
+                    fontFamily: 'GT-Planar, Inter, sans-serif',
+                    fontSize: '1.7rem',
+                    lineHeight: 1.6,
+                    color: bodyColor,
+                    marginBottom: '3.6rem',
+                    maxWidth: '720px',
+                    transition: 'color 0.5s ease',
+                  }}
+                >
+                  We deep-dive into your business model, customer journeys, and competitive landscape. We map every user action, design bespoke mockups, write clean responsive code, perform extensive testing, and launch with precision. A reliable partner to scale your engineering efforts with confidence.
+                </p>
+                <a 
+                  className="cta-button" 
+                  href="#contact"
+                  style={{
+                    background: '#ff77c9',
+                    color: '#161008',
+                    border: 'none',
+                    borderRadius: '9999px',
+                    padding: '1.2rem 2.8rem',
+                    fontSize: '1.3rem',
+                    display: 'inline-block',
+                  }}
+                >
+                  <div className="cta-button__text"><span>Request Quote</span></div>
+                </a>
               </div>
-              <h2
-                style={{
-                  fontFamily: 'GT-Planar, Inter, sans-serif',
-                  fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
-                  fontWeight: 700,
-                  lineHeight: 1.1,
-                  color: textColor,
-                  marginBottom: '2.4rem',
-                  maxWidth: '820px',
-                  transition: 'color 0.5s ease',
-                }}
-              >
-                Detailed process over guesswork.
-              </h2>
-              <p
-                style={{
-                  fontFamily: 'GT-Planar, Inter, sans-serif',
-                  fontSize: '1.7rem',
-                  lineHeight: 1.6,
-                  color: bodyColor,
-                  marginBottom: '3.6rem',
-                  maxWidth: '720px',
-                  transition: 'color 0.5s ease',
-                }}
-              >
-                We deep-dive into your business model, customer journeys, and competitive landscape. We map every user action, design bespoke mockups, write clean responsive code, perform extensive testing, and launch with precision. A reliable partner to scale your engineering efforts with confidence.
-              </p>
-              <a 
-                className="cta-button" 
-                href="#contact"
-                style={{
-                  background: '#ff77c9',
-                  color: '#161008',
-                  border: 'none',
-                  borderRadius: '9999px',
-                  padding: '1.2rem 2.8rem',
-                  fontSize: '1.3rem',
-                  display: 'inline-block',
-                }}
-              >
-                <div className="cta-button__text"><span>Request Quote</span></div>
-              </a>
             </div>
 
           </div>
