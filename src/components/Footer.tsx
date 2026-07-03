@@ -52,8 +52,17 @@ export default function Footer() {
             <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: '1.6', fontSize: '0.95rem', maxWidth: '320px' }}>
               At NexGrowth, we architect digital experiences that breathe life into your brand's most ambitious vision. Transforming pixels into possibilities.
             </p>
+            {/* Phone Contact */}
+            <div style={{ marginTop: '1.2rem', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.95rem', color: 'rgba(255,255,255,0.65)', fontFamily: 'GT-Planar, Inter, sans-serif' }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--current-color-40)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'stroke 0.5s ease' }}>
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <a href="tel:+918052731617" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.65)'}>
+                +91 8052731617
+              </a>
+            </div>
             {/* Social icons */}
-            <div className="footer__socials" style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
+            <div className="footer__socials" style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem' }}>
               {/* LinkedIn */}
               <a className="footer__social-link" href="https://linkedin.com/company/nexgrowth" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">

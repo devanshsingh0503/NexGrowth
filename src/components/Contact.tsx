@@ -251,9 +251,16 @@ export default function Contact() {
                 lineHeight: 1.7,
                 fontSize: '1.5rem',
                 fontWeight: 300,
+                marginBottom: '1.5rem',
               }}>
                 Book a free 30-minute strategy session. We'll review your project, map out your goals, and walk you through how NexGrowth can accelerate your growth.
               </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', fontSize: '1.4rem', color: 'rgba(255,255,255,0.7)', fontFamily: 'GT-Planar, Inter, sans-serif', marginTop: '1.5rem' }}>
+                <span>Or call directly:</span>
+                <a href="tel:+918052731617" style={{ color: ACCENT, textDecoration: 'none', fontWeight: 600, transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.8'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
+                  +91 8052731617
+                </a>
+              </div>
             </div>
 
             {/* Feature list */}
