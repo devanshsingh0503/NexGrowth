@@ -1,0 +1,33 @@
+import type { Metadata } from 'next';
+import './globals.css';
+import SmoothScroll from '@/components/SmoothScroll';
+import { Space_Grotesk, PT_Serif } from 'next/font/google';
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['700'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+});
+
+const ptSerif = PT_Serif({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-pt-serif',
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  title: 'NexGrowth | B2B Custom Website & Software Development Services',
+  description: 'At NexGrowth, we architect digital experiences that breathe life into your brand.',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={`${spaceGrotesk.variable} ${ptSerif.variable}`}>
+      <body>
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
+    </html>
+  );
+}
