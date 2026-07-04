@@ -228,8 +228,8 @@ export default function Contact() {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', marginTop: '0.5rem' }}>
                   <span style={{ fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255,255,255,0.3)' }}>Email Address</span>
-                  <a href="mailto:hello@nexgrowth.com" style={{ fontSize: '1.6rem', color: '#fff', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = ACCENT} onMouseLeave={e => e.currentTarget.style.color = '#fff'}>
-                    hello@nexgrowth.com
+                  <a href="mailto:dsingh05032004@gmail.com" style={{ fontSize: '1.6rem', color: '#fff', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = ACCENT} onMouseLeave={e => e.currentTarget.style.color = '#fff'}>
+                    dsingh05032004@gmail.com
                   </a>
                 </div>
               </div>
