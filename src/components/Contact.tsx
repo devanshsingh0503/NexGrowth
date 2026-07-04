@@ -15,6 +15,13 @@ export default function Contact() {
   const [error, setError] = useState<string | null>(null);
   const [focused,   setFocused]   = useState<string | null>(null);
 
+  // States for Quick Call Booking Modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [bookingPhone, setBookingPhone] = useState('');
+  const [bookingSubmitting, setBookingSubmitting] = useState(false);
+  const [bookingSubmitted, setBookingSubmitted] = useState(false);
+  const [bookingError, setBookingError] = useState<string | null>(null);
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const els = ref.current?.querySelectorAll('.anim-in');
@@ -57,6 +64,34 @@ export default function Contact() {
       setError(err.message || 'Something went wrong. Please try again.');
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleBookingSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBookingSubmitting(true);
+    setBookingError(null);
+
+    try {
+      const res = await fetch('/api/book-call', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phone: bookingPhone }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to submit request.');
+      }
+
+      setBookingSubmitted(true);
+      setBookingPhone('');
+    } catch (err: any) {
+      setBookingError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setBookingSubmitting(false);
     }
   };
 
@@ -282,20 +317,24 @@ export default function Contact() {
               </ul>
             </div>
 
-            <a
-              href="https://calendly.com/nexgrowth"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => {
+                setIsModalOpen(true);
+                setBookingSubmitted(false);
+                setBookingError(null);
+                setBookingPhone('');
+              }}
               style={{
                 display: 'inline-block',
                 background: '#ff77c9',
                 color: '#161008',
+                border: 'none',
                 borderRadius: '9999px',
                 padding: '1.2rem 2.8rem',
                 fontFamily: 'GT-Planar, Inter, sans-serif',
                 fontSize: '1.35rem',
                 fontWeight: 600,
-                textDecoration: 'none',
+                cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 width: 'fit-content',
                 marginTop: 'auto',
@@ -305,7 +344,7 @@ export default function Contact() {
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
             >
               Book a Discovery Call
-            </a>
+            </button>
           </div>
 
           {/* ── Quote Request Column ───────────────────────────────── */}
@@ -477,6 +516,219 @@ export default function Contact() {
 
         </div>
       </div>
+
+      {/* ─── Discovery Call Modal Overlay ───────────────────────── */}
+      {isModalOpen && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(10, 7, 4, 0.8)',
+          backdropFilter: 'blur(16px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 10000,
+          padding: '2rem',
+        }}>
+          <style>{`
+            @keyframes modalSlideIn {
+              from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.96);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+              }
+            }
+          `}</style>
+          {/* Modal box */}
+          <div style={{
+            background: 'rgba(30, 22, 16, 0.98)',
+            border: '1px solid rgba(255, 119, 168, 0.2)',
+            borderRadius: '24px',
+            width: '100%',
+            maxWidth: '460px',
+            padding: '3.5rem',
+            position: 'relative',
+            boxShadow: '0 24px 60px rgba(0, 0, 0, 0.8)',
+            animation: 'modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+          }}>
+            {/* Close Button */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              style={{
+                position: 'absolute',
+                top: '20px',
+                right: '20px',
+                background: 'transparent',
+                border: 'none',
+                color: 'rgba(255,255,255,0.4)',
+                fontSize: '2rem',
+                cursor: 'pointer',
+                transition: 'color 0.2s',
+                width: '32px',
+                height: '32px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = '#fff'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}
+            >
+              &times;
+            </button>
+
+            {bookingSubmitted ? (
+              <div style={{ textAlign: 'center', padding: '2rem 0' }}>
+                <div style={{
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '50%',
+                  background: 'rgba(255, 119, 168, 0.1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 2rem',
+                  border: '1px solid rgba(255, 119, 168, 0.3)',
+                }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="#ff77c9" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 style={{
+                  fontSize: '2rem',
+                  color: '#fff',
+                  fontFamily: 'GT-Planar, Inter, sans-serif',
+                  fontWeight: 700,
+                  marginBottom: '1rem',
+                }}>
+                  Call Request Received
+                </h3>
+                <p style={{
+                  color: 'rgba(255,255,255,0.5)',
+                  fontSize: '1.35rem',
+                  fontFamily: 'GT-Planar, Inter, sans-serif',
+                  lineHeight: 1.5,
+                  marginBottom: '2.5rem',
+                }}>
+                  Thank you! We will call you back at your provided number shortly to schedule our call.
+                </p>
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  style={{
+                    background: '#ff77c9',
+                    color: '#161008',
+                    border: 'none',
+                    borderRadius: '9999px',
+                    padding: '1rem 2.5rem',
+                    fontFamily: 'GT-Planar, Inter, sans-serif',
+                    fontSize: '1.25rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
+                  onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+                >
+                  Close Window
+                </button>
+              </div>
+            ) : (
+              <div>
+                <span style={{
+                  fontFamily: 'GT-Planar, Inter, sans-serif',
+                  fontSize: '0.9rem',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: ACCENT,
+                  display: 'block',
+                  marginBottom: '0.8rem',
+                  fontWeight: 600,
+                }}>
+                  Quick Booking
+                </span>
+                <h3 style={{
+                  fontSize: '2.2rem',
+                  color: '#fff',
+                  fontFamily: 'GT-Planar, Inter, sans-serif',
+                  fontWeight: 700,
+                  marginBottom: '1.2rem',
+                  lineHeight: 1.2,
+                }}>
+                  Book a Discovery Call
+                </h3>
+                <p style={{
+                  color: 'rgba(255,255,255,0.48)',
+                  fontSize: '1.35rem',
+                  fontFamily: 'GT-Planar, Inter, sans-serif',
+                  lineHeight: 1.5,
+                  marginBottom: '2.5rem',
+                }}>
+                  Enter your contact number below, and our team will call you within 24 hours to schedule your strategy session.
+                </p>
+
+                <form onSubmit={handleBookingSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                    <label htmlFor="booking-phone" style={labelStyle}>Contact Number</label>
+                    <input
+                      id="booking-phone"
+                      type="tel"
+                      placeholder="+91 99999 99999"
+                      required
+                      disabled={bookingSubmitting}
+                      value={bookingPhone}
+                      onChange={e => setBookingPhone(e.target.value)}
+                      style={inputStyle('booking-phone')}
+                    />
+                  </div>
+
+                  {bookingError && (
+                    <p style={{ color: '#ff4b4b', fontSize: '1.3rem', fontFamily: 'GT-Planar, sans-serif', margin: '0' }}>
+                      {bookingError}
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={bookingSubmitting}
+                    style={{
+                      background: bookingSubmitting ? '#cccccc' : '#ff77c9',
+                      border: 'none',
+                      borderRadius: '9999px',
+                      padding: '1.25rem 2.8rem',
+                      color: '#161008',
+                      fontSize: '1.35rem',
+                      fontWeight: 600,
+                      fontFamily: 'GT-Planar, Inter, sans-serif',
+                      cursor: bookingSubmitting ? 'not-allowed' : 'pointer',
+                      transition: 'all 0.3s ease',
+                      width: '100%',
+                      textAlign: 'center',
+                      opacity: bookingSubmitting ? 0.7 : 1,
+                    }}
+                    onMouseEnter={e => {
+                      if (!bookingSubmitting) {
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 119, 168, 0.25)';
+                      }
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
+                  >
+                    {bookingSubmitting ? 'Sending Request...' : 'Send Call Request'}
+                  </button>
+                </form>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
