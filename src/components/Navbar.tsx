@@ -158,9 +158,12 @@ export default function Navbar() {
       let current = '';
       for (const id of sections) {
         const sect = document.getElementById(id);
-        if (sect && scrollPos >= sect.offsetTop && scrollPos < sect.offsetTop + sect.offsetHeight) {
-          current = `#${id}`;
-          break;
+        if (sect) {
+          const rect = sect.getBoundingClientRect();
+          if (rect.top <= 160 && rect.bottom > 160) {
+            current = `#${id}`;
+            break;
+          }
         }
       }
       setActiveSection(current);
