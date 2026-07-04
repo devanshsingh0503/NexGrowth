@@ -11,6 +11,8 @@ export default function Contact() {
   const lineRef    = useRef<HTMLDivElement>(null);
   const [form, setForm] = useState({ name: '', email: '', projectType: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [focused,   setFocused]   = useState<string | null>(null);
 
   useEffect(() => {
@@ -31,9 +33,31 @@ export default function Contact() {
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to submit proposal.');
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputStyle = (field: string): React.CSSProperties => ({
@@ -228,8 +252,8 @@ export default function Contact() {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', marginTop: '0.5rem' }}>
                   <span style={{ fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255,255,255,0.3)' }}>Email Address</span>
-                  <a href="mailto:dsingh05032004@gmail.com" style={{ fontSize: '1.6rem', color: '#fff', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = ACCENT} onMouseLeave={e => e.currentTarget.style.color = '#fff'}>
-                    dsingh05032004@gmail.com
+                  <a href="mailto:devanshnexgrowth@gmail.com" style={{ fontSize: '1.6rem', color: '#fff', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = ACCENT} onMouseLeave={e => e.currentTarget.style.color = '#fff'}>
+                    devanshnexgrowth@gmail.com
                   </a>
                 </div>
               </div>
@@ -408,11 +432,18 @@ export default function Contact() {
                   />
                 </div>
 
+                {error && (
+                  <p style={{ color: '#ff4b4b', fontSize: '1.3rem', fontFamily: 'GT-Planar, sans-serif', margin: '0 0 1rem 0' }}>
+                    {error}
+                  </p>
+                )}
+
                 <button
                   type="submit"
+                  disabled={submitting}
                   style={{
                     display: 'inline-block',
-                    background: '#ff77c9',
+                    background: submitting ? '#cccccc' : '#ff77c9',
                     border: 'none',
                     borderRadius: '9999px',
                     padding: '1.25rem 2.8rem',
@@ -420,15 +451,24 @@ export default function Contact() {
                     fontSize: '1.35rem',
                     fontWeight: 600,
                     fontFamily: 'GT-Planar, Inter, sans-serif',
-                    cursor: 'pointer',
+                    cursor: submitting ? 'not-allowed' : 'pointer',
                     transition: 'all 0.3s ease',
                     width: 'fit-content',
                     marginTop: '0.5rem',
+                    opacity: submitting ? 0.7 : 1,
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 119, 168, 0.25)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+                  onMouseEnter={e => {
+                    if (!submitting) {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 119, 168, 0.25)';
+                    }
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
                 >
-                  Send Proposal
+                  {submitting ? 'Sending...' : 'Send Proposal'}
                 </button>
 
               </form>
