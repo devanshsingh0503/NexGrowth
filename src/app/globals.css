@@ -8532,6 +8532,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start;
 }
 
 /* Mobile responsiveness for Projects Served & Our Process section */
