@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/third-parties": "^16.2.10",
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide": "^4.1.4",
     "@studio-freight/lenis": "^1.0.42",
