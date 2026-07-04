@@ -134,43 +134,32 @@ export default function About() {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
+                justifyContent: 'flex-start',
                 flexWrap: 'wrap',
-                gap: '3rem',
+                gap: '4rem 6rem',
               }}
             >
-              {/* Logo 1: PathPulse / nPulse.ai */}
+              {/* Logo 1: dashifyservices */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', opacity: 0.85 }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 16H11V10H13V16ZM13 8H11V6H13V8Z" fill="#322312" />
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="3" width="7" height="9" rx="1.5" stroke="#322312" strokeWidth="2"/>
+                  <rect x="14" y="3" width="7" height="5" rx="1.5" stroke="#322312" strokeWidth="2"/>
+                  <rect x="3" y="16" width="7" height="5" rx="1.5" stroke="#322312" strokeWidth="2"/>
+                  <rect x="14" y="12" width="7" height="9" rx="1.5" stroke="#322312" strokeWidth="2"/>
                 </svg>
                 <span style={{ fontFamily: 'GT-Planar, sans-serif', fontSize: '1.8rem', fontWeight: 700, color: '#322312', letterSpacing: '-0.02em' }}>
-                  nPulse.ai
+                  dashifyservices
                 </span>
               </div>
 
-              {/* Logo 2: ./gradient */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', opacity: 0.85 }}>
-                <span style={{ fontFamily: 'ABCReproMono, monospace', fontSize: '1.9rem', fontWeight: 500, color: '#322312' }}>
-                  ./gradient
-                </span>
-              </div>
-
-              {/* Logo 3: Open Ledger */}
+              {/* Logo 2: Morality Home Care */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', opacity: 0.85 }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#322312" strokeWidth="2" />
-                  <path d="M12 6V12L16 14" stroke="#322312" strokeWidth="2" strokeLinecap="round" />
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 9.5L12 3L21 9.5V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V9.5Z" stroke="#322312" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M9 21V12H15V21" stroke="#322312" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <span style={{ fontFamily: 'GT-Planar, sans-serif', fontSize: '1.8rem', fontWeight: 700, color: '#322312', letterSpacing: '-0.02em' }}>
-                  Open Ledger
-                </span>
-              </div>
-
-              {/* Logo 4: NBCUniversal */}
-              <div style={{ display: 'flex', alignItems: 'center', opacity: 0.85 }}>
-                <span style={{ fontFamily: 'GT-Planar, sans-serif', fontSize: '1.8rem', fontWeight: 700, color: '#322312', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                  NBCUniversal
+                <span style={{ fontFamily: 'GT-Planar, sans-serif', fontSize: '1.8rem', fontWeight: 700, color: '#322312', letterSpacing: '-0.01em' }}>
+                  Morality Home Care
                 </span>
               </div>
             </div>
