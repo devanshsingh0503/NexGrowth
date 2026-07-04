@@ -8,51 +8,44 @@ interface Project {
   cat: string;
   desc: string;
   link: string;
-  icon: string;
 }
 
 const projects: Project[] = [
   { 
-    name: 'Civic Debate Academy', 
-    cat: 'Education & Training', 
-    desc: 'Interactive platform for coaching debate and shaping future public leaders.', 
-    link: 'https://www.cdadebate.com',
-    icon: '🎓'
+    name: 'Ghadzi', 
+    cat: 'Creative Agency', 
+    desc: 'Modern portfolio and digital design agency showcasing bespoke motion and web designs.', 
+    link: 'https://www.ghadzi.com/'
   },
   { 
-    name: 'Skihaven Retreat', 
-    cat: 'Hospitality & Booking', 
-    desc: 'Cost-effective, highly responsive reservation site featuring regional cabin guides.', 
-    link: 'https://www.skihavenretreat.com',
-    icon: '🏔️'
+    name: 'Rootspace', 
+    cat: 'Property & Spaces', 
+    desc: 'Premium digital portal for renting, hosting, and listing co-working spaces and venues.', 
+    link: 'https://rootspacefinal-psi.vercel.app/'
   },
   { 
-    name: 'OM Steel Solutions', 
-    cat: 'Industrial & B2B', 
-    desc: 'Sleek B2B portal with catalogs and custom manufacturing quotation tools.', 
-    link: 'https://omsteelsolutions.com',
-    icon: '⚙️'
+    name: 'FitForge', 
+    cat: 'Health & Fitness', 
+    desc: 'Interactive fitness center site with online memberships, class schedules, and trainer bookings.', 
+    link: 'https://gymdemo-coral.vercel.app/'
   },
   { 
-    name: 'Pet Palette', 
-    cat: 'E-commerce & Retail', 
-    desc: 'Bespoke online retail catalog for premium pet supplies and brand licensing.', 
-    link: 'https://pet-palette.com',
-    icon: '🐾'
+    name: 'Dashify Services', 
+    cat: 'B2B & Logistics', 
+    desc: 'Premium business services portal for logistics management, tracking, and operations.', 
+    link: 'https://dashifyservices.in/'
   },
   { 
-    name: 'iGauge', 
-    cat: 'SaaS & Analytics', 
-    desc: 'Metrics dashboard and reporting interface built for digital measurement and calibration.', 
-    link: 'https://www.igauge.in',
-    icon: '📊'
+    name: 'Apex Athletics', 
+    cat: 'Fitness & Training', 
+    desc: 'High-impact athlete conditioning portal featuring training programs and coach consultations.', 
+    link: 'https://gymdemo-1.vercel.app/'
   },
   { 
-    name: 'Vortexx Cloud', 
-    cat: 'Cloud Tech & Operations', 
-    desc: 'High-performance cloud panel for server automation and container orchestration.', 
-    link: 'https://vortexxcloud.com',
-    icon: '☁️'
+    name: 'Morality Care', 
+    cat: 'Healthcare & Wellness', 
+    desc: 'Compassionate clinical care portal for patient booking, wellness guides, and healthcare support.', 
+    link: 'https://morality-care.vercel.app/'
   },
 ];
 
@@ -437,7 +430,6 @@ export default function Projects() {
             <div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <span style={{ fontSize: '0.8rem', opacity: 0.6, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{proj.cat}</span>
-                <span style={{ fontSize: '1.2rem' }}>{proj.icon}</span>
               </div>
               <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: '0.6rem 0 0.4rem 0', fontFamily: 'GT-Planar, sans-serif' }}>{proj.name}</h3>
               <p style={{ fontSize: '0.9rem', opacity: 0.75, lineHeight: '1.4', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{proj.desc}</p>
