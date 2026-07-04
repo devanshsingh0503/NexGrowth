@@ -10,6 +10,7 @@ import Contact           from '@/components/Contact';
 import Footer            from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import ScrollStory       from '@/components/ScrollStory';
+import Loader            from '@/components/Loader';
 
 export const metadata: Metadata = {
   title: 'NexGrowth | B2B Custom Website & Software Development Services',
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="home">
+      <Loader />
       <AnimatedBackground />
       <Navbar />
       <Hero />

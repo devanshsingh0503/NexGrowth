@@ -40,36 +40,56 @@ export default function Hero() {
       gsap.set(button, { y: 30, opacity: 0, scale: 0.9 });
     }
 
-    const tl = gsap.timeline({ delay: 0.2 });
+    let introTriggered = false;
+    const runIntro = () => {
+      if (introTriggered) return;
+      introTriggered = true;
 
-    tl.to(words, {
-      y: 0,
-      opacity: 1,
-      rotateX: 0,
-      duration: 1.1,
-      stagger: 0.04,
-      ease: 'power4.out',
-    });
+      const tl = gsap.timeline({ delay: 0.1 });
 
-    if (subtext) {
-      tl.to(subtext, {
+      tl.to(words, {
         y: 0,
         opacity: 1,
-        filter: 'blur(0px)',
-        duration: 0.8,
-        ease: 'power3.out',
-      }, '-=0.5');
+        rotateX: 0,
+        duration: 1.1,
+        stagger: 0.04,
+        ease: 'power4.out',
+      });
+
+      if (subtext) {
+        tl.to(subtext, {
+          y: 0,
+          opacity: 1,
+          filter: 'blur(0px)',
+          duration: 0.8,
+          ease: 'power3.out',
+        }, '-=0.5');
+      }
+
+      if (button) {
+        tl.to(button, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          ease: 'back.out(1.6)',
+        }, '-=0.6');
+      }
+    };
+
+    let fallback: NodeJS.Timeout;
+
+    if (window.isLoaderComplete) {
+      runIntro();
+    } else {
+      window.addEventListener('loader-complete', runIntro);
+      fallback = setTimeout(runIntro, 3500);
     }
 
-    if (button) {
-      tl.to(button, {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.8,
-        ease: 'back.out(1.6)',
-      }, '-=0.6');
-    }
+    return () => {
+      window.removeEventListener('loader-complete', runIntro);
+      if (fallback) clearTimeout(fallback);
+    };
   }, []);
 
   // ── Scroll-pinned shape animation ─────────────────────────────────
