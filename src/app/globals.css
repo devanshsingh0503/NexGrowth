@@ -8644,7 +8644,6 @@ html {
         padding: 1.5rem 1rem !important; /* Outer padding reduced */
     }
 
-    /* Square round shaped cards for mobile */
     .home__use-cases .use-case-card {
         background: var(--card-bg) !important;
         border: 1px solid var(--card-border) !important;
@@ -8656,6 +8655,9 @@ html {
         margin: 0 !important;
         box-sizing: border-box !important;
         transition: all 0.5s ease;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
     }
 
     .home__use-cases p {

@@ -153,6 +153,8 @@ export default function UseCases() {
                     padding: '1.2rem 2.8rem',
                     fontSize: '1.3rem',
                     display: 'inline-block',
+                    width: 'fit-content',
+                    alignSelf: 'flex-start',
                   }}
                 >
                   <div className="cta-button__text"><span>Request Quote</span></div>
@@ -219,6 +221,8 @@ export default function UseCases() {
                     padding: '1.2rem 2.8rem',
                     fontSize: '1.3rem',
                     display: 'inline-block',
+                    width: 'fit-content',
+                    alignSelf: 'flex-start',
                   }}
                 >
                   <div className="cta-button__text"><span>Request Quote</span></div>
@@ -285,6 +289,8 @@ export default function UseCases() {
                     padding: '1.2rem 2.8rem',
                     fontSize: '1.3rem',
                     display: 'inline-block',
+                    width: 'fit-content',
+                    alignSelf: 'flex-start',
                   }}
                 >
                   <div className="cta-button__text"><span>Request Quote</span></div>
