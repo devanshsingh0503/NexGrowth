@@ -40,7 +40,7 @@ export default function HeroContent({ contentRef }: Props) {
             perspective: '1000px',
           }}
         >
-          {"Building High-Performance Websites and Software That Power Growing Businesses.".split(" ").map((word, i) => (
+          {"Custom B2B Web Development & Software Engineering That Power Growing Businesses.".split(" ").map((word, i) => (
             <b 
               key={i} 
               className="hero-word" 
@@ -108,7 +108,7 @@ export default function HeroContent({ contentRef }: Props) {
           }}
         >
           <div className="cta-button__text">
-            <span>Request A Quote</span>
+            <span>Discuss Your B2B Project</span>
           </div>
         </a>
       </div>

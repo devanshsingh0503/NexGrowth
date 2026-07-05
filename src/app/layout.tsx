@@ -19,6 +19,7 @@ const ptSerif = PT_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://nexgrowth.com'),
   title: 'NexGrowth | B2B Custom Website & Software Development Services',
   description: 'At NexGrowth, we architect digital experiences that breathe life into your brand.',
 };

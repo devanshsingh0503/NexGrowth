@@ -24,19 +24,19 @@ export default function News() {
         <div className="home__news__articles__list">
           <div className="home__news__articles__list__item anim-item">
             <div className="home__news__articles__list__item__content">
-              <h2>DesignRush Best Agencies 2026</h2>
+              <h3>DesignRush Best Agencies 2026</h3>
               <p style={{ color: 'rgba(255,255,255,0.6)', marginTop: '0.5rem', fontSize: '0.95rem' }}>Recipient of the prestigious Best Agencies award badge, recognizing outstanding B2B custom web design and development services.</p>
             </div>
           </div>
           <div className="home__news__articles__list__item anim-item">
             <div className="home__news__articles__list__item__content">
-              <h2>Top Web Application Developers 2026</h2>
+              <h3>Top Web Application Developers 2026</h3>
               <p style={{ color: 'rgba(255,255,255,0.6)', marginTop: '0.5rem', fontSize: '0.95rem' }}>Ranked as a premier engineering agency for custom enterprise dashboards, SaaS software architecture, and integrations.</p>
             </div>
           </div>
           <div className="home__news__articles__list__item anim-item">
             <div className="home__news__articles__list__item__content">
-              <h2>SEO Leadership Excellence</h2>
+              <h3>SEO Leadership Excellence</h3>
               <p style={{ color: 'rgba(255,255,255,0.6)', marginTop: '0.5rem', fontSize: '0.95rem' }}>Recognized for delivering high-impact organic marketing campaigns, technical site optimizations, and search visibility growth.</p>
             </div>
           </div>

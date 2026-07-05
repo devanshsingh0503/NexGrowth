@@ -1,13 +1,15 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const navLinks = [
-  { label: 'Services',    href: '#services' },
+  { label: 'Services',    href: '/services' },
   { label: 'Why NexGrowth', href: '#why-nexgrowth' },
   { label: 'Our Process', href: '#process' },
   { label: 'Portfolio',   href: '#portfolio' },
+  { label: 'Blog',        href: '/blog' },
 ];
 
 interface ThemeConfig {
@@ -133,10 +135,32 @@ const themes: ThemeConfig[] = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const ref = useRef<HTMLElement>(null);
   const [activeSection, setActiveSection] = useState('');
   const [navTheme, setNavTheme] = useState<ThemeConfig>(defaultTheme);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const links = navLinks.map(link => {
+    if (link.href.startsWith('#')) {
+      return {
+        ...link,
+        href: pathname === '/' ? link.href : `/${link.href}`
+      };
+    }
+    return link;
+  });
+
+  const isLinkActive = (linkHref: string) => {
+    if (linkHref === '/blog') {
+      return pathname === '/blog';
+    }
+    if (linkHref === '/services') {
+      return pathname.startsWith('/services');
+    }
+    const anchor = linkHref.includes('#') ? '#' + linkHref.split('#')[1] : '';
+    return activeSection === anchor;
+  };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -275,14 +299,14 @@ export default function Navbar() {
           {/* Center: Navigation Links (Desktop only) */}
           <nav className="nav-center-menu" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
             <ul style={{ display: 'flex', alignItems: 'center', gap: '8px', listStyle: 'none', margin: 0, padding: 0 }}>
-              {navLinks.map(l => (
+              {links.map(l => (
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className={activeSection === l.href ? 'is-active' : ''}
+                    className={isLinkActive(l.href) ? 'is-active' : ''}
                     style={{
                       position: 'relative',
-                      color: activeSection === l.href ? navTheme.activeText : navTheme.text,
+                      color: isLinkActive(l.href) ? navTheme.activeText : navTheme.text,
                       fontFamily: 'GT-Planar, sans-serif',
                       fontSize: '1.35rem',
                       fontWeight: 500,
@@ -293,20 +317,20 @@ export default function Navbar() {
                       display: 'inline-block',
                     }}
                     onMouseEnter={e => {
-                      if (activeSection !== l.href) {
+                      if (!isLinkActive(l.href)) {
                         e.currentTarget.style.color = '#fff';
                         e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
                       }
                     }}
                     onMouseLeave={e => {
-                      if (activeSection !== l.href) {
+                      if (!isLinkActive(l.href)) {
                         e.currentTarget.style.color = navTheme.text;
                         e.currentTarget.style.background = 'transparent';
                       }
                     }}
                   >
                     {l.label}
-                    {activeSection === l.href && (
+                    {isLinkActive(l.href) && (
                       <span
                         style={{
                           position: 'absolute',
@@ -407,7 +431,7 @@ export default function Navbar() {
             }}
           >
             <ul style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.2rem', listStyle: 'none', margin: 0, padding: 0, width: '100%' }}>
-              {navLinks.map(l => (
+              {links.map(l => (
                 <li key={l.href} style={{ width: '100%', textAlign: 'center' }}>
                   <a
                     href={l.href}
@@ -416,7 +440,7 @@ export default function Navbar() {
                       fontFamily: 'GT-Planar, Inter, sans-serif',
                       fontSize: '1.5rem',
                       fontWeight: 500,
-                      color: activeSection === l.href ? navTheme.activeText : navTheme.text,
+                      color: isLinkActive(l.href) ? navTheme.activeText : navTheme.text,
                       textDecoration: 'none',
                       display: 'block',
                       padding: '8px 0',

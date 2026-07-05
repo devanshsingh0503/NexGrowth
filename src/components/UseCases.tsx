@@ -157,7 +157,7 @@ export default function UseCases() {
                     alignSelf: 'flex-start',
                   }}
                 >
-                  <div className="cta-button__text"><span>Request Quote</span></div>
+                  <div className="cta-button__text"><span>Get Free SEO Audit</span></div>
                 </a>
               </div>
             </div>
@@ -195,7 +195,7 @@ export default function UseCases() {
                     transition: 'color 0.5s ease',
                   }}
                 >
-                  Custom digital solutions engineered for growth.
+                  Custom B2B website development &amp; software engineering.
                 </h2>
                 <p
                   style={{
@@ -225,7 +225,7 @@ export default function UseCases() {
                     alignSelf: 'flex-start',
                   }}
                 >
-                  <div className="cta-button__text"><span>Request Quote</span></div>
+                  <div className="cta-button__text"><span>Get Custom Web Quote</span></div>
                 </a>
               </div>
             </div>
@@ -293,7 +293,7 @@ export default function UseCases() {
                     alignSelf: 'flex-start',
                   }}
                 >
-                  <div className="cta-button__text"><span>Request Quote</span></div>
+                  <div className="cta-button__text"><span>Discuss Your Project</span></div>
                 </a>
               </div>
             </div>

@@ -4,18 +4,22 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const footerServices = [
-  { label: 'Website Design & Development', href: 'https://nexgrowth.com/website-design-development/' },
-  { label: 'Web Application Development', href: 'https://nexgrowth.com/web-application-development/' },
-  { label: 'Search Engine Optimisation', href: 'https://nexgrowth.com/search-engine-optimization/' },
+  { label: 'Website Development', href: '/services/web-development' },
+  { label: 'Software Development', href: '/services/software-development' },
+  { label: 'Search Engine Optimisation', href: '/services/seo' },
+  { label: 'Google Ads Agency', href: '/services/google-ads' },
+  { label: 'Facebook Ads Agency', href: '/services/meta-ads' },
+  { label: 'Social Media Management', href: '/services/social-media-marketing' },
 ];
 
 const footerLinks = [
-  { label: 'About', href: '#home__intro' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Testimonials', href: '#testimonials' },
-  { label: 'Contact', href: '#contact' },
-  { label: 'Privacy Policy', href: 'https://nexgrowth.com/privacy-policy/' },
-  { label: 'Terms of Service', href: 'https://nexgrowth.com/terms-and-condition/' },
+  { label: 'About', href: '/#home__intro' },
+  { label: 'Portfolio', href: '/#portfolio' },
+  { label: 'Testimonials', href: '/#testimonials' },
+  { label: 'Contact', href: '/#contact' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms of Service', href: '/terms-and-condition' },
 ];
 
 export default function Footer() {

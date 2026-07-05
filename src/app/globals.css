@@ -6404,7 +6404,8 @@ html {
     }
 }
 
-.home__news__articles__list__item__content h2 {
+.home__news__articles__list__item__content h2,
+.home__news__articles__list__item__content h3 {
     font-family: GT-Planar;
     font-size: 2.2rem;
     font-weight: 700;

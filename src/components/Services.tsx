@@ -307,17 +307,17 @@ export default function Services() {
             {/* Left */}
             <div>
               <h3 style={{ fontFamily: 'GT-Planar, Inter, sans-serif', fontSize: '3.6rem', fontWeight: 700, color: 'var(--text-primary, #2a0710)', marginBottom: '2rem', lineHeight: '1.1', transition: 'color 0.5s' }}>
-                Website Design &amp; Development
+                B2B Custom Website Development
               </h3>
               <p style={{ fontSize: '1.5rem', color: 'var(--text-secondary, rgba(42, 7, 16, 0.75))', lineHeight: '1.6', marginBottom: '3.5rem', transition: 'color 0.5s' }}>
-                We craft custom, conversion-driven websites designed to captivate your audience, convey your brand identity, and achieve real business goals. From high-converting corporate sites to complex e-commerce, we construct clean, responsive, and SEO-optimized sites.
+                As an experienced website development company, we craft custom website development solutions and responsive website design layouts designed to establish credibility and convert traffic. We build clean, fast, and search-optimized sites that grow with your company.
               </p>
-              <a className="cta-button" href="#contact" style={{ padding: '1.2rem 2.6rem', fontSize: '1.25rem', borderRadius: '9999px', background: 'var(--btn-bg, #2a0710)', color: 'var(--btn-text, #ffdce2)', border: 'none', display: 'inline-block', transition: 'all 0.5s ease' }}>
-                Request A Quote
+              <a className="cta-button" href="/services/web-development" style={{ padding: '1.2rem 2.6rem', fontSize: '1.25rem', borderRadius: '9999px', background: 'var(--btn-bg, #2a0710)', color: 'var(--btn-text, #ffdce2)', border: 'none', display: 'inline-block', transition: 'all 0.5s ease' }}>
+                Get Custom Website Quote
               </a>
             </div>
             {/* Right (Browser Wireframe Mockup) */}
-            <div className="services-browser" style={browserStyle}>
+            <div className="services-browser" style={browserStyle} role="img" aria-label="Responsive web design mockup showing structured user conversion wireframe layout">
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(24, 2, 6, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />
@@ -355,17 +355,17 @@ export default function Services() {
             {/* Left */}
             <div>
               <h3 style={{ fontFamily: 'GT-Planar, Inter, sans-serif', fontSize: '3.6rem', fontWeight: 700, color: 'var(--text-primary, #2a0710)', marginBottom: '2rem', lineHeight: '1.1', transition: 'color 0.5s' }}>
-                Software Development for Business
+                Custom Web Application Development
               </h3>
               <p style={{ fontSize: '1.5rem', color: 'var(--text-secondary, rgba(42, 7, 16, 0.75))', lineHeight: '1.6', marginBottom: '3.5rem', transition: 'color 0.5s' }}>
-                We build tailored, scalable web applications and SaaS platforms that streamline operations, solve complex workflows, and grow with your business. Using cutting-edge tech stacks, we deliver fast, reliable, and secure software engineered for growth.
+                As an agile software development company, we build tailored, scalable web applications and SaaS platforms that streamline operations, solve complex workflows, and grow with your business. Using cutting-edge Next.js development frameworks, we engineer fast, secure software.
               </p>
-              <a className="cta-button" href="#contact" style={{ padding: '1.2rem 2.6rem', fontSize: '1.25rem', borderRadius: '9999px', background: 'var(--btn-bg, #2a0710)', color: 'var(--btn-text, #ffdce2)', border: 'none', display: 'inline-block', transition: 'all 0.5s ease' }}>
-                Request A Quote
+              <a className="cta-button" href="/services/software-development" style={{ padding: '1.2rem 2.6rem', fontSize: '1.25rem', borderRadius: '9999px', background: 'var(--btn-bg, #2a0710)', color: 'var(--btn-text, #ffdce2)', border: 'none', display: 'inline-block', transition: 'all 0.5s ease' }}>
+                Get Custom Software Quote
               </a>
             </div>
             {/* Right (Browser SaaS Mockup) */}
-            <div className="services-browser" style={browserStyle}>
+            <div className="services-browser" style={browserStyle} role="img" aria-label="Custom SaaS application dashboard showing database metrics and user analysis">
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(24, 2, 6, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />
@@ -413,7 +413,7 @@ export default function Services() {
               </a>
             </div>
             {/* Right (Browser Mobile App Dashboard Mockup) */}
-            <div className="services-browser" style={browserStyle}>
+            <div className="services-browser" style={browserStyle} role="img" aria-label="Mobile application portal showing app downloads and store rating metrics">
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(24, 2, 6, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />
@@ -466,14 +466,14 @@ export default function Services() {
                 Search Engine Optimisation
               </h3>
               <p style={{ fontSize: '1.5rem', color: 'var(--text-secondary, rgba(42, 7, 16, 0.75))', lineHeight: '1.6', marginBottom: '3.5rem', transition: 'color 0.5s' }}>
-                We optimize your digital footprint to drive high-intent organic traffic, improve search rankings, and increase conversion rates. Our metrics-driven SEO approach includes technical audits, on-page optimization, content strategy, and authority building.
+                As an authority B2B SEO agency and technical SEO company, we grow organic visibility and search rankings. Our metrics-driven team delivers comprehensive technical SEO services, keyword-focused on-page SEO services, and strategic website SEO audits.
               </p>
-              <a className="cta-button" href="#contact" style={{ padding: '1.2rem 2.6rem', fontSize: '1.25rem', borderRadius: '9999px', background: 'var(--btn-bg, #2a0710)', color: 'var(--btn-text, #ffdce2)', border: 'none', display: 'inline-block', transition: 'all 0.5s ease' }}>
-                Request A Quote
+              <a className="cta-button" href="/services/seo" style={{ padding: '1.2rem 2.6rem', fontSize: '1.25rem', borderRadius: '9999px', background: 'var(--btn-bg, #2a0710)', color: 'var(--btn-text, #ffdce2)', border: 'none', display: 'inline-block', transition: 'all 0.5s ease' }}>
+                Get Custom SEO Quote
               </a>
             </div>
             {/* Right (Browser SEO Mockup) */}
-            <div className="services-browser" style={browserStyle}>
+            <div className="services-browser" style={browserStyle} role="img" aria-label="Search rankings dashboard showing Google keywords ranking in position 1">
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(4, 38, 22, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />
@@ -530,17 +530,22 @@ export default function Services() {
             {/* Left */}
             <div>
               <h3 style={{ fontFamily: 'GT-Planar, Inter, sans-serif', fontSize: '3.6rem', fontWeight: 700, color: 'var(--text-primary, #2a0710)', marginBottom: '2rem', lineHeight: '1.1', transition: 'color 0.5s' }}>
-                Google &amp; Meta Ads
+                Google &amp; Meta Ads Management
               </h3>
               <p style={{ fontSize: '1.5rem', color: 'var(--text-secondary, rgba(42, 7, 16, 0.75))', lineHeight: '1.6', marginBottom: '3.5rem', transition: 'color 0.5s' }}>
-                Reach high-intent customers right when they search, and capture your ideal demographic across Facebook and Instagram. We build, manage, and scale comprehensive acquisition campaigns across both Search and Social display networks to maximize direct-response ROAS.
+                As an accredited Google Ads agency and Facebook Ads agency, we deliver complete PPC management, Google Ads services, and Meta Ads management. We build, optimize, and scale campaigns across search and display networks to maximize acquisition ROAS.
               </p>
-              <a className="cta-button" href="#contact" style={{ padding: '1.2rem 2.6rem', fontSize: '1.25rem', borderRadius: '9999px', background: 'var(--btn-bg, #2a0710)', color: 'var(--btn-text, #ffdce2)', border: 'none', display: 'inline-block', transition: 'all 0.5s ease' }}>
-                Request A Quote
-              </a>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <a className="cta-button" href="/services/google-ads" style={{ padding: '1.2rem 2.6rem', fontSize: '1.25rem', borderRadius: '9999px', background: 'var(--btn-bg, #2a0710)', color: 'var(--btn-text, #ffdce2)', border: 'none', display: 'inline-block', transition: 'all 0.5s ease' }}>
+                  Get Google Ads Quote
+                </a>
+                <a className="cta-button" href="/services/meta-ads" style={{ padding: '1.2rem 2.6rem', fontSize: '1.25rem', borderRadius: '9999px', background: 'var(--btn-bg, #2a0710)', color: 'var(--btn-text, #ffdce2)', border: 'none', display: 'inline-block', transition: 'all 0.5s ease' }}>
+                  Get Facebook Ads Quote
+                </a>
+              </div>
             </div>
             {/* Right (Browser Combined Google & Meta Ads Mockup) */}
-            <div className="services-browser" style={browserStyle}>
+            <div className="services-browser" style={browserStyle} role="img" aria-label="Paid advertising interface displaying campaign ROAS performance and CPA metrics">
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(4, 38, 22, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />
@@ -588,14 +593,14 @@ export default function Services() {
                 Social Media Marketing (SMM)
               </h3>
               <p style={{ fontSize: '1.5rem', color: 'var(--text-secondary, rgba(42, 7, 16, 0.75))', lineHeight: '1.6', marginBottom: '3.5rem', transition: 'color 0.5s' }}>
-                Social media platforms are some of the best places to reach your audience. The best digital marketing companies, like NexGrowth, use social media to help your company reach your target audience, build credibility, and grow a community around your brand.
+                As an experienced social media marketing agency, we handle all aspects of social media management, organic Instagram marketing, and customer engagement. As a full-suite digital marketing agency, we leverage networks to connect you with your audience and grow your brand.
               </p>
-              <a className="cta-button" href="#contact" style={{ padding: '1.2rem 2.6rem', fontSize: '1.25rem', borderRadius: '9999px', background: 'var(--btn-bg, #2a0710)', color: 'var(--btn-text, #ffdce2)', border: 'none', display: 'inline-block', transition: 'all 0.5s ease' }}>
-                Request A Quote
+              <a className="cta-button" href="/services/social-media-marketing" style={{ padding: '1.2rem 2.6rem', fontSize: '1.25rem', borderRadius: '9999px', background: 'var(--btn-bg, #2a0710)', color: 'var(--btn-text, #ffdce2)', border: 'none', display: 'inline-block', transition: 'all 0.5s ease' }}>
+                Get Social Marketing Quote
               </a>
             </div>
             {/* Right (Browser SMM Mockup) */}
-            <div className="services-browser" style={browserStyle}>
+            <div className="services-browser" style={browserStyle} role="img" aria-label="Social media feed visualizer displaying likes count and community growth progress">
               <div style={{ height: '40px', borderBottom: '1px solid var(--surface-border, rgba(42, 7, 16, 0.12))', background: 'rgba(4, 38, 22, 0.9)', display: 'flex', alignItems: 'center', padding: '0 1.6rem', gap: '0.8rem', transition: 'border-color 0.5s' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fd8565', opacity: 0.8 }} />
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffc2ad', opacity: 0.8 }} />

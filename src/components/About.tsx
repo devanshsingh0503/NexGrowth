@@ -63,7 +63,7 @@ export default function About() {
               marginBottom: '2rem',
             }}
           >
-            Meet NexGrowth
+            B2B Web Development &amp; Software Company
           </p>
 
           {/* Headline - Products that grow. Not products you'll rebuild. */}
@@ -98,7 +98,7 @@ export default function About() {
               margin: '0 0 5rem 0',
             }}
           >
-            We design and engineer websites, MVPs, and software that launch faster, scale effortlessly, and help your business move with confidence.
+            We design and engineer high-performance business websites, custom software, SaaS web applications, and MVPs that launch faster, scale effortlessly, and help your business move with confidence.
           </p>
 
           {/* Collaborators Container Card */}

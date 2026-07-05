@@ -32,7 +32,7 @@ export default function Testimonials() {
                 {t.quote}
               </p>
               <div>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--current-color-40)' }}>{t.name}</h4>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--current-color-40)' }}>{t.name}</h3>
                 <span style={{ fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.5)', display: 'block', marginTop: '0.25rem' }}>{t.role} – {t.company}</span>
               </div>
             </div>
