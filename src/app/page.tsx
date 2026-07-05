@@ -1,16 +1,13 @@
 import type { Metadata } from 'next';
-import Navbar            from '@/components/Navbar';
-import Hero              from '@/components/Hero';
-import About             from '@/components/About';
-import Services          from '@/components/Services';
-import UseCases          from '@/components/UseCases';
-import Projects          from '@/components/Projects';
-import Architecture      from '@/components/Architecture';
-import Contact           from '@/components/Contact';
-import Footer            from '@/components/Footer';
-import AnimatedBackground from '@/components/AnimatedBackground';
-import ScrollStory       from '@/components/ScrollStory';
-import Loader            from '@/components/Loader';
+
+// Above-the-fold: statically imported for instant SSR render
+import Navbar         from '@/components/Navbar';
+import Hero           from '@/components/Hero';
+import About          from '@/components/About';
+import Footer         from '@/components/Footer';
+// Heavy client sections lazy-loaded inside a 'use client' boundary
+import ClientSections from '@/components/ClientSections';
+
 
 export const metadata: Metadata = {
   title: 'NexGrowth | B2B Custom Website & Software Development Services',
@@ -224,17 +221,10 @@ export default function Page() {
           ])
         }}
       />
-      <Loader />
-      <AnimatedBackground />
       <Navbar />
       <Hero />
       <About />
-      <Services />
-      <UseCases />
-      <ScrollStory />
-      <Projects />
-      <Architecture />
-      <Contact />
+      <ClientSections />
       <Footer />
     </div>
   );
