@@ -36,6 +36,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://nexgrowth.in'),
   title: 'NexGrowth | B2B Custom Website & Software Development Services',
   description: 'At NexGrowth, we architect digital experiences that breathe life into your brand.',
+  verification: {
+    google: 'google2646f726e83f6e4d',
+  },
   icons: {
     icon: [
       { url: '/icon.png', sizes: '1024x1024', type: 'image/png' },
