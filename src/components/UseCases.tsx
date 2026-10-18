@@ -3,10 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const DARK_BG = '#1b0d22'; // Gloomy deep plum
-const LIGHT_BG = '#ECDDFC'; // Premium light lavender/white
-const DARK_TEXT = 'rgba(236, 221, 252, 0.45)';
-const LIGHT_TEXT = '#410060';
+const DARK_BG = '#171916';
+const LIGHT_BG = '#f4f2ea';
 
 export default function UseCases() {
   const ref = useRef<HTMLElement>(null);
@@ -17,15 +15,16 @@ export default function UseCases() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const items = ref.current?.querySelectorAll('.anim-slide');
-    if (!items) return;
+    if (!items || items.length === 0) return;
 
-    gsap.fromTo([...items],
-      { x: 60, opacity: 0 },
+    gsap.fromTo(
+      [...items],
+      { x: 50, opacity: 0 },
       { 
         x: 0, 
         opacity: 1, 
         duration: 0.9, 
-        stagger: 0.2, 
+        stagger: 0.15, 
         ease: 'power3.out',
         scrollTrigger: { trigger: ref.current, start: 'top 70%' } 
       }
@@ -45,35 +44,33 @@ export default function UseCases() {
       });
     }
 
-    // Realistic light-bulb turn-on / turn-off transition
+    // Realistic lighting switch transition
     const tl = gsap.timeline();
     if (clamped === 0) {
-      // Light turned off
+      // Light turned off (dark mode)
       tl.to(ref.current, {
         backgroundColor: DARK_BG,
-        color: DARK_TEXT,
-        duration: 0.7,
+        duration: 0.6,
         ease: 'power2.inOut',
       });
     } else {
-      // Light turned on (rapid warm-up ignition effect)
+      // Light turned on (subtle flash warm-up)
       tl.to(ref.current, {
-        backgroundColor: '#ffffff', // brief bright flash
-        color: LIGHT_TEXT,
+        backgroundColor: '#ffffff',
         duration: 0.08,
         ease: 'none',
       })
       .to(ref.current, {
-        backgroundColor: LIGHT_BG, // settle to warm theme background
-        duration: 0.55,
+        backgroundColor: LIGHT_BG,
+        duration: 0.5,
         ease: 'power2.out',
       });
     }
   };
 
   const isLight = active > 0;
-  const textColor = isLight ? LIGHT_TEXT : 'rgba(236, 221, 252, 0.85)';
-  const bodyColor = isLight ? 'rgba(65, 0, 96, 0.85)' : DARK_TEXT;
+  const textColor = isLight ? '#171916' : '#f4f2ea';
+  const bodyColor = isLight ? '#50534b' : 'rgba(244, 242, 234, 0.7)';
 
   return (
     <section 
@@ -82,34 +79,57 @@ export default function UseCases() {
       id="why-nexgrowth"
       style={{
         background: DARK_BG,
-        color: DARK_TEXT,
+        color: textColor,
         transition: 'color 0.5s ease',
         position: 'relative',
         overflow: 'hidden',
-        padding: '12rem 0',
+        padding: '10rem 0',
       }}
     >
-      <div className="container" style={{ maxWidth: '1200px' }}>
-        <div className="home__use-cases__content__slider" style={{ overflow: 'hidden', position: 'relative', borderRadius: '24px' }}>
+      <div className="container" style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 2rem' }}>
+        <div 
+          className="home__use-cases__content__slider" 
+          style={{ 
+            overflow: 'hidden', 
+            position: 'relative', 
+            borderRadius: '28px',
+          }}
+        >
           
-          <div ref={trackRef} className="home__use-cases__content__slider__container" style={{ display: 'flex', willChange: 'transform' }}>
+          <div 
+            ref={trackRef} 
+            className="home__use-cases__content__slider__container" 
+            style={{ display: 'flex', willChange: 'transform' }}
+          >
             
             {/* Slide 0: Other Agencies (Dark) */}
-            <div className="use-case-slide anim-slide" style={{ minWidth: '100%', padding: '4rem 2rem' }}>
-              <div className="use-case-card" style={{ '--card-bg': isLight ? 'rgba(65, 0, 96, 0.03)' : 'rgba(255, 255, 255, 0.02)', '--card-border': isLight ? 'rgba(65, 0, 96, 0.08)' : 'rgba(255, 255, 255, 0.06)' } as React.CSSProperties}>
+            <div className="use-case-slide anim-slide" style={{ minWidth: '100%', padding: '3.5rem 1.5rem' }}>
+              <div 
+                className="use-case-card" 
+                style={{ 
+                  background: isLight ? '#ffffff' : '#1d201c',
+                  border: isLight ? '1px solid rgba(23, 25, 22, 0.08)' : '1px solid rgba(244, 242, 234, 0.10)',
+                  borderRadius: '28px',
+                  padding: '4.5rem',
+                  boxShadow: isLight ? '0 16px 48px rgba(23, 25, 22, 0.06)' : '0 20px 60px rgba(0, 0, 0, 0.45)',
+                  transition: 'all 0.5s ease',
+                }}
+              >
                 <div 
                   className="home__use-cases__content__slide__left__tag"
                   style={{
                     display: 'inline-block',
-                    border: `1px solid ${isLight ? 'rgba(65, 0, 96, 0.2)' : 'rgba(236, 221, 252, 0.2)'}`,
-                    background: isLight ? 'rgba(65, 0, 96, 0.04)' : 'rgba(236, 221, 252, 0.03)',
-                    padding: '4px 12px',
+                    border: '1px solid rgba(244, 242, 234, 0.15)',
+                    background: 'rgba(244, 242, 234, 0.05)',
+                    padding: '5px 14px',
                     borderRadius: '6px',
-                    fontFamily: 'monospace',
-                    fontSize: '1.15rem',
+                    fontFamily: 'var(--font-inter), Inter, monospace',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
                     textTransform: 'uppercase',
-                    color: textColor,
-                    marginBottom: '2.5rem',
+                    letterSpacing: '0.08em',
+                    color: 'rgba(244, 242, 234, 0.75)',
+                    marginBottom: '2.2rem',
                     transition: 'all 0.5s ease',
                   }}
                 >
@@ -117,13 +137,13 @@ export default function UseCases() {
                 </div>
                 <h2
                   style={{
-                    fontFamily: 'GT-Planar, Inter, sans-serif',
-                    fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                    fontFamily: 'var(--font-oswald), Oswald, sans-serif',
+                    fontSize: 'clamp(2.4rem, 4.5vw, 4rem)',
                     fontWeight: 700,
-                    lineHeight: 1.1,
+                    lineHeight: 1.12,
                     color: textColor,
-                    marginBottom: '2.4rem',
-                    maxWidth: '820px',
+                    marginBottom: '2rem',
+                    maxWidth: '840px',
                     transition: 'color 0.5s ease',
                   }}
                 >
@@ -131,12 +151,12 @@ export default function UseCases() {
                 </h2>
                 <p
                   style={{
-                    fontFamily: 'GT-Planar, Inter, sans-serif',
-                    fontSize: '1.7rem',
+                    fontFamily: 'var(--font-inter), Inter, sans-serif',
+                    fontSize: '1.35rem',
                     lineHeight: 1.6,
                     color: bodyColor,
-                    marginBottom: '3.6rem',
-                    maxWidth: '720px',
+                    marginBottom: '3.2rem',
+                    maxWidth: '740px',
                     transition: 'color 0.5s ease',
                   }}
                 >
@@ -146,38 +166,61 @@ export default function UseCases() {
                   className="cta-button" 
                   href="#contact"
                   style={{
-                    background: '#ff77c9', // Brand pink
-                    color: '#161008',
+                    background: '#e5ff3d',
+                    color: '#171916',
                     border: 'none',
                     borderRadius: '9999px',
-                    padding: '1.2rem 2.8rem',
-                    fontSize: '1.3rem',
-                    display: 'inline-block',
-                    width: 'fit-content',
-                    alignSelf: 'flex-start',
+                    padding: '1.1rem 2.6rem',
+                    fontSize: '1.25rem',
+                    fontWeight: 700,
+                    fontFamily: 'var(--font-inter), Inter, sans-serif',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 4px 20px rgba(229, 255, 61, 0.25)',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(229, 255, 61, 0.4)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(229, 255, 61, 0.25)';
                   }}
                 >
-                  <div className="cta-button__text"><span>Get Free SEO Audit</span></div>
+                  <span>Get Free SEO Audit</span>
                 </a>
               </div>
             </div>
 
             {/* Slide 1: The NexGrowth Difference (Light) */}
-            <div className="use-case-slide anim-slide" style={{ minWidth: '100%', padding: '4rem 2rem' }}>
-              <div className="use-case-card" style={{ '--card-bg': isLight ? 'rgba(65, 0, 96, 0.03)' : 'rgba(255, 255, 255, 0.02)', '--card-border': isLight ? 'rgba(65, 0, 96, 0.08)' : 'rgba(255, 255, 255, 0.06)' } as React.CSSProperties}>
+            <div className="use-case-slide anim-slide" style={{ minWidth: '100%', padding: '3.5rem 1.5rem' }}>
+              <div 
+                className="use-case-card" 
+                style={{ 
+                  background: isLight ? '#ffffff' : '#1d201c',
+                  border: isLight ? '1px solid rgba(23, 25, 22, 0.08)' : '1px solid rgba(244, 242, 234, 0.10)',
+                  borderRadius: '28px',
+                  padding: '4.5rem',
+                  boxShadow: isLight ? '0 16px 48px rgba(23, 25, 22, 0.06)' : '0 20px 60px rgba(0, 0, 0, 0.45)',
+                  transition: 'all 0.5s ease',
+                }}
+              >
                 <div 
                   className="home__use-cases__content__slide__left__tag"
                   style={{
                     display: 'inline-block',
-                    border: `1px solid ${isLight ? 'rgba(65, 0, 96, 0.2)' : 'rgba(236, 221, 252, 0.2)'}`,
-                    background: isLight ? 'rgba(65, 0, 96, 0.04)' : 'rgba(236, 221, 252, 0.03)',
-                    padding: '4px 12px',
+                    background: '#171916',
+                    color: '#e5ff3d',
+                    padding: '5px 14px',
                     borderRadius: '6px',
-                    fontFamily: 'monospace',
-                    fontSize: '1.15rem',
+                    fontFamily: 'var(--font-inter), Inter, monospace',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
                     textTransform: 'uppercase',
-                    color: textColor,
-                    marginBottom: '2.5rem',
+                    letterSpacing: '0.08em',
+                    marginBottom: '2.2rem',
                     transition: 'all 0.5s ease',
                   }}
                 >
@@ -185,13 +228,13 @@ export default function UseCases() {
                 </div>
                 <h2
                   style={{
-                    fontFamily: 'GT-Planar, Inter, sans-serif',
-                    fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                    fontFamily: 'var(--font-oswald), Oswald, sans-serif',
+                    fontSize: 'clamp(2.4rem, 4.5vw, 4rem)',
                     fontWeight: 700,
-                    lineHeight: 1.1,
+                    lineHeight: 1.12,
                     color: textColor,
-                    marginBottom: '2.4rem',
-                    maxWidth: '820px',
+                    marginBottom: '2rem',
+                    maxWidth: '840px',
                     transition: 'color 0.5s ease',
                   }}
                 >
@@ -199,12 +242,12 @@ export default function UseCases() {
                 </h2>
                 <p
                   style={{
-                    fontFamily: 'GT-Planar, Inter, sans-serif',
-                    fontSize: '1.7rem',
+                    fontFamily: 'var(--font-inter), Inter, sans-serif',
+                    fontSize: '1.35rem',
                     lineHeight: 1.6,
                     color: bodyColor,
-                    marginBottom: '3.6rem',
-                    maxWidth: '720px',
+                    marginBottom: '3.2rem',
+                    maxWidth: '740px',
                     transition: 'color 0.5s ease',
                   }}
                 >
@@ -214,38 +257,61 @@ export default function UseCases() {
                   className="cta-button" 
                   href="#contact"
                   style={{
-                    background: '#ff77c9',
-                    color: '#161008',
+                    background: '#171916',
+                    color: '#e5ff3d',
                     border: 'none',
                     borderRadius: '9999px',
-                    padding: '1.2rem 2.8rem',
-                    fontSize: '1.3rem',
-                    display: 'inline-block',
-                    width: 'fit-content',
-                    alignSelf: 'flex-start',
+                    padding: '1.1rem 2.6rem',
+                    fontSize: '1.25rem',
+                    fontWeight: 700,
+                    fontFamily: 'var(--font-inter), Inter, sans-serif',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 4px 20px rgba(23, 25, 22, 0.25)',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(23, 25, 22, 0.4)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(23, 25, 22, 0.25)';
                   }}
                 >
-                  <div className="cta-button__text"><span>Get Custom Web Quote</span></div>
+                  <span>Get Custom Web Quote</span>
                 </a>
               </div>
             </div>
 
             {/* Slide 2: Why NexGrowth (Light) */}
-            <div className="use-case-slide anim-slide" style={{ minWidth: '100%', padding: '4rem 2rem' }}>
-              <div className="use-case-card" style={{ '--card-bg': isLight ? 'rgba(65, 0, 96, 0.03)' : 'rgba(255, 255, 255, 0.02)', '--card-border': isLight ? 'rgba(65, 0, 96, 0.08)' : 'rgba(255, 255, 255, 0.06)' } as React.CSSProperties}>
+            <div className="use-case-slide anim-slide" style={{ minWidth: '100%', padding: '3.5rem 1.5rem' }}>
+              <div 
+                className="use-case-card" 
+                style={{ 
+                  background: isLight ? '#ffffff' : '#1d201c',
+                  border: isLight ? '1px solid rgba(23, 25, 22, 0.08)' : '1px solid rgba(244, 242, 234, 0.10)',
+                  borderRadius: '28px',
+                  padding: '4.5rem',
+                  boxShadow: isLight ? '0 16px 48px rgba(23, 25, 22, 0.06)' : '0 20px 60px rgba(0, 0, 0, 0.45)',
+                  transition: 'all 0.5s ease',
+                }}
+              >
                 <div 
                   className="home__use-cases__content__slide__left__tag"
                   style={{
                     display: 'inline-block',
-                    border: `1px solid ${isLight ? 'rgba(65, 0, 96, 0.2)' : 'rgba(236, 221, 252, 0.2)'}`,
-                    background: isLight ? 'rgba(65, 0, 96, 0.04)' : 'rgba(236, 221, 252, 0.03)',
-                    padding: '4px 12px',
+                    background: '#171916',
+                    color: '#e5ff3d',
+                    padding: '5px 14px',
                     borderRadius: '6px',
-                    fontFamily: 'monospace',
-                    fontSize: '1.15rem',
+                    fontFamily: 'var(--font-inter), Inter, monospace',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
                     textTransform: 'uppercase',
-                    color: textColor,
-                    marginBottom: '2.5rem',
+                    letterSpacing: '0.08em',
+                    marginBottom: '2.2rem',
                     transition: 'all 0.5s ease',
                   }}
                 >
@@ -253,13 +319,13 @@ export default function UseCases() {
                 </div>
                 <h2
                   style={{
-                    fontFamily: 'GT-Planar, Inter, sans-serif',
-                    fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                    fontFamily: 'var(--font-oswald), Oswald, sans-serif',
+                    fontSize: 'clamp(2.4rem, 4.5vw, 4rem)',
                     fontWeight: 700,
-                    lineHeight: 1.1,
+                    lineHeight: 1.12,
                     color: textColor,
-                    marginBottom: '2.4rem',
-                    maxWidth: '820px',
+                    marginBottom: '2rem',
+                    maxWidth: '840px',
                     transition: 'color 0.5s ease',
                   }}
                 >
@@ -267,12 +333,12 @@ export default function UseCases() {
                 </h2>
                 <p
                   style={{
-                    fontFamily: 'GT-Planar, Inter, sans-serif',
-                    fontSize: '1.7rem',
+                    fontFamily: 'var(--font-inter), Inter, sans-serif',
+                    fontSize: '1.35rem',
                     lineHeight: 1.6,
                     color: bodyColor,
-                    marginBottom: '3.6rem',
-                    maxWidth: '720px',
+                    marginBottom: '3.2rem',
+                    maxWidth: '740px',
                     transition: 'color 0.5s ease',
                   }}
                 >
@@ -282,18 +348,30 @@ export default function UseCases() {
                   className="cta-button" 
                   href="#contact"
                   style={{
-                    background: '#ff77c9',
-                    color: '#161008',
+                    background: '#171916',
+                    color: '#e5ff3d',
                     border: 'none',
                     borderRadius: '9999px',
-                    padding: '1.2rem 2.8rem',
-                    fontSize: '1.3rem',
-                    display: 'inline-block',
-                    width: 'fit-content',
-                    alignSelf: 'flex-start',
+                    padding: '1.1rem 2.6rem',
+                    fontSize: '1.25rem',
+                    fontWeight: 700,
+                    fontFamily: 'var(--font-inter), Inter, sans-serif',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 4px 20px rgba(23, 25, 22, 0.25)',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(23, 25, 22, 0.4)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(23, 25, 22, 0.25)';
                   }}
                 >
-                  <div className="cta-button__text"><span>Discuss Your Project</span></div>
+                  <span>Discuss Your Project</span>
                 </a>
               </div>
             </div>
@@ -305,8 +383,8 @@ export default function UseCases() {
             className="home__use-cases__content__slide__left__navigation"
             style={{
               position: 'absolute',
-              right: '24px',
-              bottom: '24px',
+              right: '32px',
+              bottom: '32px',
               display: 'flex',
               gap: '12px',
               zIndex: 10,
@@ -317,18 +395,26 @@ export default function UseCases() {
               onClick={() => goTo(active - 1)} 
               aria-label="Previous"
               style={{
-                width: '44px',
-                height: '44px',
+                width: '46px',
+                height: '46px',
                 borderRadius: '50%',
-                background: isLight ? 'rgba(65, 0, 96, 0.08)' : 'rgba(236, 221, 252, 0.08)',
-                border: `1px solid ${isLight ? 'rgba(65, 0, 96, 0.15)' : 'rgba(236, 221, 252, 0.15)'}`,
+                background: isLight ? 'rgba(23, 25, 22, 0.08)' : 'rgba(244, 242, 234, 0.08)',
+                border: isLight ? '1px solid rgba(23, 25, 22, 0.15)' : '1px solid rgba(244, 242, 234, 0.15)',
                 color: textColor,
-                fontSize: '1.6rem',
+                fontSize: '1.5rem',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                transition: 'all 0.3s ease',
+                transition: 'all 0.25s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'scale(1.08)';
+                e.currentTarget.style.borderColor = '#e5ff3d';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.borderColor = isLight ? 'rgba(23, 25, 22, 0.15)' : 'rgba(244, 242, 234, 0.15)';
               }}
             >
               &#8592;
@@ -338,18 +424,26 @@ export default function UseCases() {
               onClick={() => goTo(active + 1)} 
               aria-label="Next"
               style={{
-                width: '44px',
-                height: '44px',
+                width: '46px',
+                height: '46px',
                 borderRadius: '50%',
-                background: isLight ? 'rgba(65, 0, 96, 0.08)' : 'rgba(236, 221, 252, 0.08)',
-                border: `1px solid ${isLight ? 'rgba(65, 0, 96, 0.15)' : 'rgba(236, 221, 252, 0.15)'}`,
+                background: isLight ? 'rgba(23, 25, 22, 0.08)' : 'rgba(244, 242, 234, 0.08)',
+                border: isLight ? '1px solid rgba(23, 25, 22, 0.15)' : '1px solid rgba(244, 242, 234, 0.15)',
                 color: textColor,
-                fontSize: '1.6rem',
+                fontSize: '1.5rem',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                transition: 'all 0.3s ease',
+                transition: 'all 0.25s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'scale(1.08)';
+                e.currentTarget.style.borderColor = '#e5ff3d';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.borderColor = isLight ? 'rgba(23, 25, 22, 0.15)' : 'rgba(244, 242, 234, 0.15)';
               }}
             >
               &#8594;

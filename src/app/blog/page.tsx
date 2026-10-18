@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import BookCallModal from '@/components/BookCallModal';
 
 export const metadata: Metadata = {
   title: 'B2B Web Engineering & SEO Insights Blog | NexGrowth',
   description: 'Read the latest guides, checklists, and insights on building high-performance B2B websites, SaaS dashboards, and technical SEO campaigns.',
   alternates: {
-    canonical: 'https://nexgrowth.com/blog',
+    canonical: 'https://nexgrowth.in/blog',
   },
 };
 
@@ -17,7 +20,6 @@ export default function BlogPage() {
       date: 'July 05, 2026',
       readTime: '6 min read',
       tag: 'Web Design',
-      color: 'var(--current-color-40, #ff77c9)'
     },
     {
       title: 'How Much Does Website Development Cost in India?',
@@ -25,7 +27,6 @@ export default function BlogPage() {
       date: 'July 03, 2026',
       readTime: '7 min read',
       tag: 'Pricing Guides',
-      color: '#ffd28a'
     },
     {
       title: 'Website vs Landing Page: Which One Does Your Business Need?',
@@ -33,7 +34,6 @@ export default function BlogPage() {
       date: 'June 29, 2026',
       readTime: '5 min read',
       tag: 'Marketing Strategy',
-      color: '#c8faae'
     },
     {
       title: '10 SEO Mistakes Small Businesses Make',
@@ -41,7 +41,6 @@ export default function BlogPage() {
       date: 'June 21, 2026',
       readTime: '8 min read',
       tag: 'SEO Optimization',
-      color: 'var(--current-color-40, #ff77c9)'
     },
     {
       title: 'Google Ads vs Facebook Ads: Which Is Better?',
@@ -49,7 +48,6 @@ export default function BlogPage() {
       date: 'June 15, 2026',
       readTime: '9 min read',
       tag: 'Paid Ads',
-      color: '#ffd28a'
     },
     {
       title: 'Why Every Local Business Needs a Website in 2026',
@@ -57,7 +55,6 @@ export default function BlogPage() {
       date: 'June 10, 2026',
       readTime: '6 min read',
       tag: 'Local SEO',
-      color: '#c8faae'
     },
     {
       title: 'How Custom SaaS Dashboards Streamline Enterprise Operations',
@@ -65,7 +62,6 @@ export default function BlogPage() {
       date: 'May 14, 2026',
       readTime: '8 min read',
       tag: 'Engineering',
-      color: '#c8faae'
     },
     {
       title: 'The Technical SEO Checklist for Next.js Applications in 2026',
@@ -73,184 +69,269 @@ export default function BlogPage() {
       date: 'April 02, 2026',
       readTime: '10 min read',
       tag: 'SEO Optimization',
-      color: '#ffd28a'
-    }
+    },
   ];
 
   return (
-    <div style={{ background: '#161008', minHeight: '100vh', color: '#fcfaf8', fontFamily: 'GT-Planar, Inter, sans-serif', padding: '6rem 2rem' }}>
+    <div style={{ backgroundColor: '#f4f2ea', color: '#171916', minHeight: '100vh', position: 'relative' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
-            'itemListElement': [
+            itemListElement: [
               {
                 '@type': 'ListItem',
-                'position': 1,
-                'name': 'Home',
-                'item': 'https://nexgrowth.com'
+                position: 1,
+                name: 'Home',
+                item: 'https://nexgrowth.in',
               },
               {
                 '@type': 'ListItem',
-                'position': 2,
-                'name': 'Blog',
-                'item': 'https://nexgrowth.com/blog'
-              }
-            ]
-          })
+                position: 2,
+                name: 'Blog',
+                item: 'https://nexgrowth.in/blog',
+              },
+            ],
+          }),
         }}
       />
-      <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-        
-        {/* Navigation / Header back home */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6rem' }}>
-          <Link 
-            href="/" 
-            style={{ 
-              fontFamily: 'GT-Planar, sans-serif', 
-              fontSize: '1.4rem', 
-              fontWeight: 700, 
-              color: 'var(--current-color-40, #ff77c9)', 
-              textDecoration: 'none', 
-              letterSpacing: '-0.04em' 
-            }}
-          >
-            NEXGROWTH
-          </Link>
+
+      {/* Global FlowPilot Navbar */}
+      <Navbar />
+
+      <main style={{ paddingTop: 'clamp(110px, 14vh, 150px)', paddingBottom: '7rem' }}>
+        <div className="flow-container" style={{ maxWidth: '1120px' }}>
           {/* Breadcrumbs */}
-          <nav 
+          <nav
             aria-label="Breadcrumb"
-            style={{ 
-              fontFamily: 'ABCReproMono, monospace', 
-              fontSize: '0.8rem', 
-              textTransform: 'uppercase', 
+            style={{
+              marginBottom: '2.5rem',
+              fontFamily: 'var(--font-inter), Inter, sans-serif',
+              fontSize: '0.8125rem',
+              fontWeight: 600,
+              textTransform: 'uppercase',
               letterSpacing: '0.08em',
-              color: 'rgba(252,250,248,0.5)'
+              color: '#50534b',
+              display: 'flex',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '0.5rem',
             }}
           >
-            <Link href="/" style={{ color: 'rgba(252,250,248,0.6)', textDecoration: 'none', transition: 'color 0.2s' }}>Home</Link>
-            <span style={{ margin: '0 8px', color: 'rgba(252,250,248,0.3)' }}>&gt;</span>
-            <span style={{ color: 'var(--current-color-40, #ff77c9)' }}>Blog</span>
+            <Link href="/" style={{ color: '#50534b', transition: 'color 0.2s' }}>
+              Home
+            </Link>
+            <span style={{ opacity: 0.35 }}>/</span>
+            <span style={{ color: '#171916', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#e5ff3d', display: 'inline-block' }} />
+              Blog
+            </span>
           </nav>
-        </div>
 
-        {/* Hero Section */}
-        <div style={{ marginBottom: '5rem' }}>
-          <p style={{ fontFamily: 'ABCReproMono, monospace', fontSize: '0.9rem', color: 'var(--current-color-40, #ff77c9)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>
-            ENGINEERING &amp; GROWTH INSIGHTS
-          </p>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: '1.05', maxWidth: '800px', marginBottom: '2rem' }}>
-            B2B Custom Software &amp; SEO Publication
-          </h1>
-          <p style={{ fontSize: '1.25rem', color: 'rgba(252,250,248,0.7)', maxWidth: '640px', lineHeight: '1.6' }}>
-            Practical engineering playbooks, website conversion strategies, and search engine optimization guides for high-growth businesses.
-          </p>
-        </div>
+          {/* Hero Header */}
+          <div style={{ marginBottom: '4rem' }}>
+            <div style={{ marginBottom: '1.25rem' }}>
+              <span className="flow-tag">
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#171916' }} />
+                Engineering &amp; Growth Insights
+              </span>
+            </div>
 
-        {/* Articles List Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem', margin: '4rem 0' }}>
-          {posts.map((post, idx) => (
-            <article 
-              key={idx} 
-              style={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
-                justifyContent: 'space-between',
-                background: 'rgba(255, 255, 255, 0.02)', 
-                border: '1px solid rgba(255, 255, 255, 0.05)', 
-                borderRadius: '16px', 
-                padding: '2.5rem 2rem', 
-                transition: 'transform 0.3s, border-color 0.3s' 
+            <h1
+              className="font-display"
+              style={{
+                fontSize: 'clamp(2.5rem, 5.5vw, 4.2rem)',
+                lineHeight: 1.0,
+                fontWeight: 700,
+                color: '#171916',
+                letterSpacing: '-0.025em',
+                marginBottom: '1.5rem',
               }}
             >
-              <div>
-                <span style={{ 
-                  fontFamily: 'ABCReproMono, monospace', 
-                  fontSize: '0.75rem', 
-                  textTransform: 'uppercase', 
-                  color: post.color, 
-                  border: `1px solid ${post.color}`, 
-                  padding: '4px 10px', 
-                  borderRadius: '4px',
-                  letterSpacing: '0.08em',
-                  display: 'inline-block',
-                  marginBottom: '2rem'
-                }}>
-                  {post.tag}
-                </span>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 600, color: '#fff', marginBottom: '1.2rem', lineHeight: '1.25', letterSpacing: '-0.02em' }}>
-                  {post.title}
-                </h2>
-                <p style={{ color: 'rgba(252,250,248,0.65)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '2rem' }}>
-                  {post.excerpt}
-                </p>
-              </div>
-              
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '1.5rem', fontSize: '0.85rem', color: 'rgba(252,250,248,0.45)', fontFamily: 'ABCReproMono, monospace' }}>
-                <span>{post.date}</span>
-                <span>{post.readTime}</span>
-              </div>
-            </article>
-          ))}
-        </div>
+              B2B Custom Software &amp; SEO Publication
+            </h1>
 
-        {/* Call to action card linking back to home services and contact */}
-        <div style={{ background: '#1c150b', border: '1px solid rgba(252,250,248,0.06)', borderRadius: '20px', padding: '4rem 3rem', textAlign: 'center', marginTop: '6rem' }}>
-          <h2 style={{ fontSize: '2.2rem', fontWeight: 700, color: '#fff', marginBottom: '1rem', letterSpacing: '-0.03em' }}>
-            Ready to scale your digital presence?
-          </h2>
-          <p style={{ color: 'rgba(252,250,248,0.7)', maxWidth: '580px', margin: '0 auto 2.5rem auto', fontSize: '1.1rem', lineHeight: '1.6' }}>
-            We design, engineer, and optimize custom B2B web applications and software platforms that drive conversions.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link 
-              href="/#contact" 
-              style={{ 
-                padding: '1.2rem 2.6rem', 
-                fontSize: '1.1rem', 
-                fontFamily: 'ABCReproMono, monospace',
-                textTransform: 'uppercase',
-                fontWeight: 500,
-                borderRadius: '6px', 
-                background: '#fcfaf8', 
-                color: '#161008', 
-                textDecoration: 'none' 
+            <p
+              style={{
+                fontFamily: 'var(--font-inter), Inter, sans-serif',
+                fontSize: '1.1875rem',
+                lineHeight: 1.6,
+                color: '#50534b',
+                maxWidth: '720px',
               }}
             >
-              Get In Touch
-            </Link>
-            <Link 
-              href="/#services" 
-              style={{ 
-                padding: '1.2rem 2.6rem', 
-                fontSize: '1.1rem', 
-                fontFamily: 'ABCReproMono, monospace',
-                textTransform: 'uppercase',
-                fontWeight: 500,
-                borderRadius: '6px', 
-                background: 'rgba(252,250,248,0.05)', 
-                color: '#fff', 
-                border: '1px solid rgba(252,250,248,0.15)',
-                textDecoration: 'none' 
+              Practical engineering playbooks, website conversion strategies, and search engine optimization guides for high-growth businesses.
+            </p>
+          </div>
+
+          {/* Articles Grid */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '1.75rem',
+              marginBottom: '5rem',
+            }}
+          >
+            {posts.map((post, idx) => (
+              <article
+                key={idx}
+                style={{
+                  backgroundColor: '#ffffff',
+                  borderRadius: '24px',
+                  border: '1px solid rgba(23, 25, 22, 0.08)',
+                  padding: 'clamp(2rem, 3.5vw, 2.5rem)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  boxShadow: '0 8px 30px rgba(23, 25, 22, 0.03)',
+                  transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                }}
+              >
+                <div>
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-inter), Inter, sans-serif',
+                        fontSize: '0.75rem',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.06em',
+                        backgroundColor: '#f4f2ea',
+                        color: '#171916',
+                        padding: '0.35rem 0.85rem',
+                        borderRadius: '999px',
+                        border: '1px solid rgba(23, 25, 22, 0.08)',
+                        display: 'inline-block',
+                      }}
+                    >
+                      {post.tag}
+                    </span>
+                  </div>
+
+                  <h2
+                    className="font-display"
+                    style={{
+                      fontSize: '1.45rem',
+                      lineHeight: 1.2,
+                      fontWeight: 700,
+                      color: '#171916',
+                      letterSpacing: '-0.02em',
+                      marginBottom: '1rem',
+                    }}
+                  >
+                    {post.title}
+                  </h2>
+
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-inter), Inter, sans-serif',
+                      fontSize: '0.9375rem',
+                      lineHeight: 1.6,
+                      color: '#50534b',
+                      marginBottom: '2rem',
+                    }}
+                  >
+                    {post.excerpt}
+                  </p>
+                </div>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    borderTop: '1px solid rgba(23, 25, 22, 0.08)',
+                    paddingTop: '1.25rem',
+                    fontSize: '0.8125rem',
+                    fontWeight: 600,
+                    color: '#50534b',
+                    fontFamily: 'var(--font-inter), Inter, sans-serif',
+                  }}
+                >
+                  <span>{post.date}</span>
+                  <span style={{ color: '#171916' }}>{post.readTime}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Bottom Dark CTA Card */}
+          <div
+            style={{
+              backgroundColor: '#171916',
+              color: '#f4f2ea',
+              borderRadius: '24px',
+              padding: 'clamp(2.5rem, 5vw, 4rem)',
+              textAlign: 'center',
+              border: '1px solid rgba(244, 242, 234, 0.12)',
+              boxShadow: '0 20px 48px rgba(0, 0, 0, 0.25)',
+            }}
+          >
+            <div style={{ marginBottom: '1rem' }}>
+              <span className="flow-tag-dark">
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#e5ff3d' }} />
+                Get Started
+              </span>
+            </div>
+            <h2
+              className="font-display"
+              style={{
+                fontSize: 'clamp(1.85rem, 3.5vw, 2.75rem)',
+                lineHeight: 1.1,
+                letterSpacing: '-0.02em',
+                marginBottom: '1rem',
+                color: '#f4f2ea',
               }}
             >
-              Our Services
-            </Link>
+              Ready to scale your digital presence?
+            </h2>
+            <p
+              style={{
+                fontFamily: 'var(--font-inter), Inter, sans-serif',
+                fontSize: '1.05rem',
+                lineHeight: 1.6,
+                color: 'rgba(244, 242, 234, 0.7)',
+                maxWidth: '580px',
+                margin: '0 auto 2.5rem',
+              }}
+            >
+              We design, engineer, and optimize custom B2B web applications and software platforms that drive conversions.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/#contact" className="btn-primary-lime">
+                Get In Touch →
+              </Link>
+              <Link
+                href="/services"
+                style={{
+                  padding: '0.875rem 1.75rem',
+                  borderRadius: '999px',
+                  fontFamily: 'var(--font-inter), Inter, sans-serif',
+                  fontSize: '0.9375rem',
+                  fontWeight: 600,
+                  color: '#f4f2ea',
+                  backgroundColor: 'transparent',
+                  border: '1px solid rgba(244, 242, 234, 0.25)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  transition: 'background-color 0.2s, border-color 0.2s',
+                }}
+              >
+                Our Services
+              </Link>
+            </div>
           </div>
         </div>
+      </main>
 
-        {/* Footer */}
-        <div style={{ borderTop: '1px solid rgba(252,250,248,0.1)', marginTop: '6rem', paddingTop: '2.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', fontSize: '0.9rem', color: 'rgba(252,250,248,0.4)' }}>
-          <p>© 2026 NexGrowth. All rights reserved.</p>
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <Link href="/privacy-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</Link>
-            <Link href="/terms-and-condition" style={{ color: 'inherit', textDecoration: 'none' }}>Terms of Service</Link>
-          </div>
-        </div>
+      {/* Global FlowPilot Footer */}
+      <Footer />
 
-      </div>
+      {/* Discovery Call Modal */}
+      <BookCallModal />
     </div>
   );
 }

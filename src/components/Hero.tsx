@@ -1,129 +1,268 @@
 'use client';
+
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import HeroShapes from './HeroShapes';
-import HeroContent from './HeroContent';
-import { useHeroScroll } from '@/hooks/useHeroScroll';
 
 export default function Hero() {
-  const wrapperRef     = useRef<HTMLElement>(null);
-  const topShapeRef    = useRef<SVGSVGElement>(null);
-  const bottomShapeRef = useRef<SVGSVGElement>(null);
-  const contentRef     = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const tagRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const marqueeRef = useRef<HTMLDivElement>(null);
 
-  // ── Entry animation ───────────────────────────────────────────────
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const content = contentRef.current;
-    if (!content) return;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    const words = content.querySelectorAll('.hero-word');
-    const subtext = content.querySelector('.hero-support');
-    const button = content.querySelector('.home__hero-button');
-
-    if (words.length === 0) return;
-
-    // Set initial premium states
-    gsap.set(words, { 
-      y: 50, 
-      opacity: 0, 
-      rotateX: -45, 
-      transformOrigin: 'top center',
-      transformStyle: 'preserve-3d',
-    });
-    if (subtext) {
-      gsap.set(subtext, { y: 20, opacity: 0, filter: 'blur(8px)' });
-    }
-    if (button) {
-      gsap.set(button, { y: 30, opacity: 0, scale: 0.9 });
-    }
-
-    let introTriggered = false;
-    const runIntro = () => {
-      if (introTriggered) return;
-      introTriggered = true;
-
-      const tl = gsap.timeline({ delay: 0.1 });
-
-      tl.to(words, {
-        y: 0,
-        opacity: 1,
-        rotateX: 0,
-        duration: 1.1,
-        stagger: 0.04,
-        ease: 'power4.out',
-      });
-
-      if (subtext) {
-        tl.to(subtext, {
-          y: 0,
-          opacity: 1,
-          filter: 'blur(0px)',
-          duration: 0.8,
-          ease: 'power3.out',
-        }, '-=0.5');
+      if (tagRef.current) {
+        tl.fromTo(
+          tagRef.current,
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6 }
+        );
       }
 
-      if (button) {
-        tl.to(button, {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          ease: 'back.out(1.6)',
-        }, '-=0.6');
+      if (headlineRef.current) {
+        tl.fromTo(
+          headlineRef.current.children,
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.85, stagger: 0.12 },
+          '-=0.3'
+        );
       }
-    };
 
-    let fallback: NodeJS.Timeout;
+      if (subtitleRef.current) {
+        tl.fromTo(
+          subtitleRef.current,
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.65, clearProps: 'opacity,transform' },
+          '-=0.4'
+        );
+      }
 
-    if (window.isLoaderComplete) {
-      runIntro();
-    } else {
-      window.addEventListener('loader-complete', runIntro);
-      fallback = setTimeout(runIntro, 3500);
-    }
+      if (ctaRef.current) {
+        tl.fromTo(
+          ctaRef.current.children,
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, clearProps: 'opacity,transform' },
+          '-=0.4'
+        );
+      }
 
-    return () => {
-      window.removeEventListener('loader-complete', runIntro);
-      if (fallback) clearTimeout(fallback);
-    };
+      if (marqueeRef.current) {
+        tl.fromTo(
+          marqueeRef.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 1, clearProps: 'opacity' },
+          '-=0.2'
+        );
+      }
+
+      // ── Scroll-based Editorial Parallax (Drift without fading out text) ──
+      if (headlineRef.current && containerRef.current) {
+        const line1 = headlineRef.current.children[0];
+        const line2 = headlineRef.current.children[1];
+        const line3 = headlineRef.current.children[2];
+
+        // Opposing horizontal drift on scroll
+        gsap.to(line1, {
+          x: -35,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.2,
+          },
+        });
+
+        gsap.to(line2, {
+          x: 35,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.2,
+          },
+        });
+
+        gsap.to(line3, {
+          x: -25,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.2,
+          },
+        });
+      }
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
-  // ── Scroll-pinned shape animation ─────────────────────────────────
-  useHeroScroll(wrapperRef, topShapeRef, bottomShapeRef, contentRef);
+  const marqueeItems = [
+    'Custom Websites',
+    'SaaS Dashboards',
+    'Technical SEO',
+    'Enterprise Software',
+    'Google Ads & PPC',
+    'High-Converting UX',
+    'Speed & Core Web Vitals',
+    'Full-Stack Architecture',
+  ];
 
   return (
     <section
-      ref={wrapperRef}
-      id="home__hero"
-      className="home__hero"
+      ref={containerRef}
       style={{
         position: 'relative',
-        height: '100vh',
-        width: '100%',
+        backgroundColor: '#f4f2ea',
+        paddingTop: 'clamp(110px, 16vh, 170px)',
+        paddingBottom: '4rem',
         overflow: 'hidden',
-        background: '#211512',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundImage:
-          'radial-gradient(ellipse 70% 55% at 50% 50%, rgba(255,119,201,0.07) 0%, transparent 70%)',
       }}
     >
-      <HeroShapes topRef={topShapeRef} bottomRef={bottomShapeRef} />
-      <HeroContent contentRef={contentRef} />
+      <div className="flow-container">
+        {/* Eyebrow Tag Pill */}
+        <div ref={tagRef} style={{ marginBottom: '1.75rem' }}>
+          <div className="flow-tag">
+            <span
+              style={{
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                backgroundColor: '#171916',
+              }}
+            />
+            B2B WEB DEVELOPMENT &amp; SOFTWARE ENGINEERING
+          </div>
+        </div>
+
+        {/* Giant Editorial Headline */}
+        <h1
+          ref={headlineRef}
+          className="font-display"
+          style={{
+            fontSize: 'clamp(3.5rem, 8.2vw, 7.5rem)',
+            lineHeight: 0.94,
+            fontWeight: 700,
+            color: '#171916',
+            letterSpacing: '-0.03em',
+            marginBottom: '2rem',
+            maxWidth: '1100px',
+            willChange: 'transform, opacity',
+          }}
+        >
+          <div style={{ overflow: 'hidden' }}>
+            <span style={{ display: 'inline-block' }}>YOUR PRODUCT,</span>
+          </div>
+          <div style={{ overflow: 'hidden' }}>
+            <span style={{ display: 'inline-block' }}>FINALLY</span>
+          </div>
+          <div style={{ overflow: 'hidden' }}>
+            <span style={{ display: 'inline-block' }}>IN FLOW.</span>
+          </div>
+        </h1>
+
+        {/* Subtitle */}
+        <p
+          ref={subtitleRef}
+          style={{
+            fontFamily: 'var(--font-inter), Inter, sans-serif',
+            fontSize: 'clamp(1.125rem, 1.4vw, 1.35rem)',
+            lineHeight: 1.6,
+            color: '#171916',
+            fontWeight: 450,
+            maxWidth: '680px',
+            marginBottom: '2.5rem',
+            opacity: 1,
+          }}
+        >
+          We design and develop custom websites, web applications, and software platforms that help businesses acquire users, streamline operations, and scale with confidence.
+        </p>
+
+        {/* CTA Button Row */}
+        <div
+          ref={ctaRef}
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            gap: '1rem',
+            marginBottom: '5rem',
+          }}
+        >
+          <a
+            href="#contact"
+            className="btn-primary-lime"
+            style={{ fontSize: '1rem', padding: '1rem 2rem' }}
+          >
+            <span>Discuss Your B2B Project</span>
+            <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>→</span>
+          </a>
+
+          <a
+            href="#services"
+            className="btn-secondary-outline"
+            style={{ fontSize: '1rem', padding: '1rem 2rem' }}
+          >
+            Explore Services
+          </a>
+        </div>
+      </div>
+
+      {/* FlowPilot Infinite Marquee Ticker */}
       <div
-        aria-hidden="true"
+        ref={marqueeRef}
         style={{
-          position: 'absolute', bottom: 0, left: 0,
-          width: '100%', height: '18%',
-          background: 'linear-gradient(to bottom, transparent, var(--black))',
-          zIndex: 20, pointerEvents: 'none',
+          width: '100%',
+          overflow: 'hidden',
+          borderTop: '1px solid rgba(23, 25, 22, 0.08)',
+          borderBottom: '1px solid rgba(23, 25, 22, 0.08)',
+          padding: '1.25rem 0',
+          backgroundColor: 'rgba(23, 25, 22, 0.02)',
         }}
-      />
+      >
+        <div className="marquee-track">
+          {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, idx) => (
+            <div
+              key={idx}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '1.75rem',
+                marginRight: '1.75rem',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: 'var(--font-oswald), Oswald, sans-serif',
+                  fontSize: '1.15rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.04em',
+                  color: 'rgba(23, 25, 22, 0.45)',
+                }}
+              >
+                {item}
+              </span>
+              <span
+                style={{
+                  width: '5px',
+                  height: '5px',
+                  borderRadius: '50%',
+                  backgroundColor: '#e5ff3d',
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

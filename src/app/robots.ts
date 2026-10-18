@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://nexgrowth.com/sitemap.xml',
+    sitemap: 'https://nexgrowth.in/sitemap.xml',
   };
 }

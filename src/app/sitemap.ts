@@ -1,96 +1,135 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
   return [
+    // Core Pages
     {
-      url: 'https://nexgrowth.com',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+      url: 'https://nexgrowth.in',
+      lastModified: now,
+      changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
-      url: 'https://nexgrowth.com/privacy-policy',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.3,
+      url: 'https://nexgrowth.in/services',
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     {
-      url: 'https://nexgrowth.com/terms-and-condition',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.3,
-    },
-    {
-      url: 'https://nexgrowth.com/blog',
-      lastModified: new Date(),
+      url: 'https://nexgrowth.in/blog',
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
+
+    // Commercial Services (India & Worldwide)
     {
-      url: 'https://nexgrowth.com/services',
-      lastModified: new Date(),
+      url: 'https://nexgrowth.in/services/web-development',
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://nexgrowth.in/services/software-development',
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://nexgrowth.in/services/shopify-development',
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://nexgrowth.in/services/landing-page-development',
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: 'https://nexgrowth.in/services/website-redesign',
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: 'https://nexgrowth.in/services/seo',
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: 'https://nexgrowth.in/services/google-ads',
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://nexgrowth.com/services/web-development',
-      lastModified: new Date(),
+      url: 'https://nexgrowth.in/services/meta-ads',
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://nexgrowth.com/services/software-development',
-      lastModified: new Date(),
+      url: 'https://nexgrowth.in/services/social-media-marketing',
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+
+    // High-Intent Local Landing Pages (Delhi NCR & UP)
+    {
+      url: 'https://nexgrowth.in/services/web-development/ghaziabad',
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://nexgrowth.com/services/seo',
-      lastModified: new Date(),
+      url: 'https://nexgrowth.in/services/web-development/noida',
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://nexgrowth.com/services/google-ads',
-      lastModified: new Date(),
+      url: 'https://nexgrowth.in/services/web-development/delhi',
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://nexgrowth.com/services/meta-ads',
-      lastModified: new Date(),
+      url: 'https://nexgrowth.in/services/software-development/noida',
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://nexgrowth.com/services/social-media-marketing',
-      lastModified: new Date(),
+      url: 'https://nexgrowth.in/services/seo/ghaziabad',
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://nexgrowth.com/services/web-development/noida',
-      lastModified: new Date(),
+      url: 'https://nexgrowth.in/services/web-development/lucknow',
+      lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.6,
+      priority: 0.7,
+    },
+
+    // Legal & Information
+    {
+      url: 'https://nexgrowth.in/privacy-policy',
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
     },
     {
-      url: 'https://nexgrowth.com/services/web-development/delhi',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: 'https://nexgrowth.com/services/web-development/lucknow',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: 'https://nexgrowth.com/services/web-development/ghaziabad',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
+      url: 'https://nexgrowth.in/terms-and-condition',
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
     },
   ];
 }

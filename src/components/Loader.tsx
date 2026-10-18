@@ -66,7 +66,7 @@ export default function Loader() {
       }
     }, '-=0.2');
 
-    // 5. Entrance transition out (Staggered parallax layers)
+    // 5. Entrance transition out (Staggered parallax curtain wipes)
     // First fade out center UI elements
     tl.to([logoRef.current, progressLineRef.current, counterRef.current], {
       opacity: 0,
@@ -75,26 +75,26 @@ export default function Loader() {
       ease: 'power2.in'
     }, '+=0.2');
 
-    // Slide up back panel (dark chocolate)
-    tl.to(panel3Ref.current, {
-      yPercent: -100,
-      duration: 1.1,
-      ease: 'power4.inOut'
-    }, '-=0.3');
-
-    // Slide up middle panel (NexGrowth Pink)
-    tl.to(panel2Ref.current, {
-      yPercent: -100,
-      duration: 1.1,
-      ease: 'power4.inOut'
-    }, '-=0.95');
-
-    // Slide up main front container (obsidian)
+    // Slide up front container (Panel 1: #171916) revealing Panel 2 (#e5ff3d)
     tl.to(containerRef.current, {
       yPercent: -100,
-      duration: 1.1,
+      duration: 1.0,
       ease: 'power4.inOut'
-    }, '-=0.95');
+    }, '-=0.1');
+
+    // Slide up middle panel (Panel 2: #e5ff3d electric lime wipe) revealing Panel 3 (#f4f2ea)
+    tl.to(panel2Ref.current, {
+      yPercent: -100,
+      duration: 1.0,
+      ease: 'power4.inOut'
+    }, '-=0.8');
+
+    // Slide up back panel (Panel 3: #f4f2ea cream wipe that reveals the hero!)
+    tl.to(panel3Ref.current, {
+      yPercent: -100,
+      duration: 1.0,
+      ease: 'power4.inOut'
+    }, '-=0.8');
 
     return () => {
       document.body.style.overflow = '';
@@ -103,7 +103,7 @@ export default function Loader() {
 
   return (
     <>
-      {/* Background layer 3 (Dark Chocolate) */}
+      {/* Background layer 3 (Panel 3: Warm Cream #f4f2ea wipe that reveals hero) */}
       <div
         ref={panel3Ref}
         style={{
@@ -112,12 +112,12 @@ export default function Loader() {
           left: 0,
           width: '100%',
           height: '100vh',
-          background: '#211512',
+          background: '#f4f2ea',
           zIndex: 99997,
         }}
       />
 
-      {/* Background layer 2 (NexGrowth Pink) */}
+      {/* Background layer 2 (Panel 2: Electric Lime #e5ff3d wipe) */}
       <div
         ref={panel2Ref}
         style={{
@@ -126,12 +126,12 @@ export default function Loader() {
           left: 0,
           width: '100%',
           height: '100vh',
-          background: '#ff77c9',
+          background: '#e5ff3d',
           zIndex: 99998,
         }}
       />
 
-      {/* Front Container (Obsidian Brown) */}
+      {/* Front Container (Panel 1: Near Black #171916) */}
       <div
         ref={containerRef}
         style={{
@@ -140,7 +140,7 @@ export default function Loader() {
           left: 0,
           width: '100%',
           height: '100vh',
-          background: '#161008',
+          background: '#171916',
           zIndex: 99999,
           display: 'flex',
           alignItems: 'center',
@@ -163,13 +163,13 @@ export default function Loader() {
               key={index}
               className="loader-letter"
               style={{
-                fontFamily: 'GT-Planar, Inter, sans-serif',
-                fontSize: 'clamp(2rem, 6vw, 4.5rem)',
-                fontWeight: 800,
-                color: '#fff',
-                letterSpacing: '0.15em',
+                fontFamily: 'var(--font-oswald), Oswald, sans-serif',
+                fontSize: 'clamp(2.5rem, 6.5vw, 5rem)',
+                fontWeight: 700,
+                color: '#f4f2ea',
+                letterSpacing: '0.12em',
                 display: 'inline-block',
-                textShadow: '0 0 20px rgba(255, 255, 255, 0.1)',
+                textShadow: '0 0 30px rgba(244, 242, 234, 0.15)',
               }}
             >
               {char}
@@ -183,7 +183,7 @@ export default function Loader() {
           style={{
             width: '240px',
             height: '2px',
-            background: 'rgba(255, 255, 255, 0.07)',
+            background: 'rgba(244, 242, 234, 0.12)',
             borderRadius: '99px',
             position: 'relative',
             overflow: 'hidden',
@@ -196,9 +196,9 @@ export default function Loader() {
               left: 0,
               height: '100%',
               width: `${progress}%`,
-              background: 'linear-gradient(to right, #ff77c9, #ffb4e1)',
+              background: '#e5ff3d',
               borderRadius: '99px',
-              boxShadow: '0 0 10px rgba(255, 119, 201, 0.8)',
+              boxShadow: '0 0 12px rgba(229, 255, 61, 0.7)',
             }}
           />
         </div>
@@ -207,14 +207,15 @@ export default function Loader() {
         <div
           ref={counterRef}
           style={{
-            fontFamily: 'GT-Planar, Inter, monospace',
+            fontFamily: 'var(--font-inter), Inter, monospace',
             fontSize: '1.25rem',
             fontWeight: 500,
-            color: 'rgba(255, 255, 255, 0.5)',
+            color: 'rgba(244, 242, 234, 0.65)',
             letterSpacing: '0.12em',
           }}
         >
           <span>{String(progress).padStart(3, '0')}</span>
+          <span style={{ color: '#e5ff3d', marginLeft: '2px' }}>%</span>
         </div>
       </div>
     </>

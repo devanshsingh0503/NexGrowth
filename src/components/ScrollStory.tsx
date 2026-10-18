@@ -12,26 +12,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
  *
  * Mechanism:
  *   • Section is pinned for 8 × 120vh of scroll distance
- *   • GSAP scrub timeline drives ALL animation — no IntersectionObserver here
+ *   • GSAP scrub timeline drives ALL animation
  *   • Wheel rotates –45° per step (360°/8), bringing the next dot to 12 o'clock
  *   • Each step's text panel fades out upward, next fades in upward
  *   • Step labels counter-rotate so they stay legible throughout
  *   • Active dot blooms with accent color + soft glow
  *   • Static "pointer" triangle sits at 12 o'clock outside the wheel
  *
- * Palette:
- *   Background  #410060   Text     #ECDDFC   Accent  #D778F8
- *
- * Fonts (loaded in layout.tsx):
- *   --font-space-grotesk  headlines
- *   --font-pt-serif       body copy
- *   monospace             badges / wheel labels
+ * Palette (FlowPilot Design System):
+ *   Background  #171916   Text     #f4f2ea   Accent  #e5ff3d
  */
 
-const BG     = '#410060';
-const FG     = '#ECDDFC';
-const ACCENT = '#D778F8';
-const DIM    = 'rgba(236,221,252,0.22)';
+const BG     = '#171916';
+const FG     = '#f4f2ea';
+const ACCENT = '#e5ff3d';
+const DIM    = 'rgba(244,242,234,0.20)';
 const N      = 8;
 const RADIUS = 155; // wheel node radius in px
 const WHEEL  = (RADIUS + 52) * 2; // overall wheel div size
@@ -144,7 +139,7 @@ export default function ScrollStory() {
     /* ── Counter — updated via onUpdate ── */
     if (stepCounterRef.current) stepCounterRef.current.textContent = '01 / 08';
 
-    // ── Neon light switch ignition & 3D Zoom-in (triggered once on section entry) ──
+    // ── Ignition & 3D Zoom-in (triggered once on section entry) ──
     const ignitionTl = gsap.timeline({
       scrollTrigger: {
         trigger: wrapper,
@@ -154,21 +149,12 @@ export default function ScrollStory() {
     });
 
     ignitionTl
-      .fromTo(wrapper,
-        { backgroundColor: '#161008' }, // start from previous section's dark chocolate
-        { backgroundColor: '#60058c', duration: 0.08, ease: 'none' } // quick flash to bright purple
-      )
-      .to(wrapper, {
-        backgroundColor: BG, // settle to deep process purple
-        duration: 0.55,
-        ease: 'power2.out',
-      })
       .fromTo([ambientGlowRef.current, stepCounterRef.current, dotRefs.current[0]],
         { opacity: 0 },
         { 
           opacity: 1, 
-          duration: 0.06, 
-          repeat: 3, 
+          duration: 0.08, 
+          repeat: 2, 
           yoyo: true, 
           ease: 'none' 
         }, 
@@ -201,7 +187,6 @@ export default function ScrollStory() {
       }, 0.1);
 
     const ctx = gsap.context(() => {
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: wrapper,
@@ -231,7 +216,6 @@ export default function ScrollStory() {
 
       for (let i = 0; i < N - 1; i++) {
         const start = i * seg;
-        const end   = (i + 1) * seg;
 
         /* ── Wheel rotation: -45° per step → next dot to 12 o'clock ── */
         tl.to(wheel, {
@@ -314,7 +298,7 @@ export default function ScrollStory() {
           width:      '55vw',
           height:     '55vw',
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${ACCENT}18 0%, transparent 65%)`,
+          background: `radial-gradient(circle, ${ACCENT}15 0%, transparent 65%)`,
           pointerEvents: 'none',
           zIndex:     0,
         }}
@@ -340,24 +324,25 @@ export default function ScrollStory() {
           {/* Section eyebrow */}
           <p
             style={{
-              fontFamily:    'monospace, monospace',
-              fontSize:      '1.15rem',
+              fontFamily:    'var(--font-inter), Inter, sans-serif',
+              fontSize:      '0.85rem',
+              fontWeight:    600,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
               color:         ACCENT,
               marginBottom:  '2.5rem',
             }}
           >
-            Our Process
+            Our Process // Step by Step
           </p>
 
           {/* Premium Card Container */}
           <div style={{
-            background: '#f7f0fd',
-            border: '1px solid rgba(65, 0, 96, 0.12)',
-            borderRadius: '32px',
+            background: '#1d201c',
+            border: '1px solid rgba(244, 242, 234, 0.12)',
+            borderRadius: '28px',
             padding: '4.5rem',
-            boxShadow: '0 20px 80px rgba(0, 0, 0, 0.25)',
+            boxShadow: '0 20px 80px rgba(0, 0, 0, 0.5)',
             minHeight: '420px',
             position: 'relative',
             width: '100%',
@@ -379,15 +364,17 @@ export default function ScrollStory() {
                 <div
                   style={{
                     display:       'inline-block',
-                    fontFamily:    'monospace, monospace',
-                    fontSize:      '1.2rem',
-                    letterSpacing: '0.06em',
-                    color:         '#410060',
-                    border:        '1px solid rgba(65, 0, 96, 0.15)',
-                    background:    'rgba(65, 0, 96, 0.05)',
+                    fontFamily:    'var(--font-inter), Inter, monospace',
+                    fontSize:      '0.85rem',
+                    fontWeight:    600,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color:         ACCENT,
+                    border:        `1px solid ${ACCENT}`,
+                    background:    'rgba(229, 255, 61, 0.08)',
                     borderRadius:  '6px',
-                    padding:       '4px 12px',
-                    marginBottom:  '2.4rem',
+                    padding:       '5px 14px',
+                    marginBottom:  '2.2rem',
                   }}
                 >
                   Step {step.num}
@@ -396,13 +383,13 @@ export default function ScrollStory() {
                 {/* Headline */}
                 <h2
                   style={{
-                    fontFamily:    'var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif',
+                    fontFamily:    'var(--font-oswald), Oswald, sans-serif',
                     fontWeight:    700,
-                    fontSize:      'clamp(2.8rem, 4vw, 4.2rem)',
+                    fontSize:      'clamp(2.6rem, 4vw, 3.8rem)',
                     lineHeight:    1.08,
                     letterSpacing: '-0.02em',
-                    color:         '#410060',
-                    marginBottom:  '2.4rem',
+                    color:         FG,
+                    marginBottom:  '2rem',
                   }}
                 >
                   {step.headline}
@@ -411,11 +398,11 @@ export default function ScrollStory() {
                 {/* Body */}
                 <p
                   style={{
-                    fontFamily:    'var(--font-pt-serif), "PT Serif", Georgia, serif',
+                    fontFamily:    'var(--font-inter), Inter, sans-serif',
                     fontWeight:    400,
-                    fontSize:      '1.75rem',
+                    fontSize:      '1.35rem',
                     lineHeight:    1.6,
-                    color:         'rgba(65, 0, 96, 0.75)',
+                    color:         'rgba(244, 242, 234, 0.7)',
                     maxWidth:      '100%',
                   }}
                 >
@@ -469,7 +456,7 @@ export default function ScrollStory() {
               style={{
                 position:     'absolute',
                 inset:        '26px',
-                border:       `1px solid rgba(236,221,252,0.10)`,
+                border:       `1px solid rgba(244, 242, 234, 0.10)`,
                 borderRadius: '50%',
               }}
             />
@@ -479,7 +466,7 @@ export default function ScrollStory() {
               style={{
                 position:     'absolute',
                 inset:        '60px',
-                border:       `1px solid rgba(236,221,252,0.06)`,
+                border:       `1px solid rgba(244, 242, 234, 0.06)`,
                 borderRadius: '50%',
               }}
             />
@@ -497,7 +484,7 @@ export default function ScrollStory() {
                     left:            '50%',
                     width:           `${RADIUS}px`,
                     height:          '1px',
-                    background:      `rgba(236,221,252,0.06)`,
+                    background:      `rgba(244, 242, 234, 0.08)`,
                     transformOrigin: '0 50%',
                     transform:       `rotate(${angleDeg}deg)`,
                   }}
@@ -538,10 +525,11 @@ export default function ScrollStory() {
                 <div
                   ref={(el) => setLabel(el, i)}
                   style={{
-                    fontFamily:    'monospace, monospace',
-                    fontSize:      '1.05rem',
+                    fontFamily:    'var(--font-inter), Inter, monospace',
+                    fontSize:      '1rem',
+                    fontWeight:    600,
                     letterSpacing: '0.04em',
-                    color:         i === 0 ? FG : `rgba(236,221,252,0.3)`,
+                    color:         i === 0 ? FG : `rgba(244, 242, 234, 0.3)`,
                     opacity:       i === 0 ? 1 : 0.3,
                     transformOrigin: 'center center',
                     willChange:    'transform, opacity',
@@ -584,10 +572,11 @@ export default function ScrollStory() {
               <span
                 ref={stepCounterRef}
                 style={{
-                  fontFamily:    'monospace, monospace',
+                  fontFamily:    'var(--font-inter), Inter, monospace',
                   fontSize:      '1.1rem',
+                  fontWeight:    600,
                   letterSpacing: '0.08em',
-                  color:         `rgba(236,221,252,0.45)`,
+                  color:         `rgba(244, 242, 234, 0.55)`,
                 }}
               >
                 01 / 08

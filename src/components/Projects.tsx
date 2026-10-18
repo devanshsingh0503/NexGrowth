@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -106,7 +106,7 @@ export default function Projects() {
         scrollTrigger: {
           trigger: wrapper,
           start: 'top top',
-          end: '+=150%', // pinned for 150vh scroll story
+          end: '+=150%',
           pin: true,
           scrub: 0.3,
           anticipatePin: 1,
@@ -114,10 +114,10 @@ export default function Projects() {
         },
       });
 
-      // ── 0–15%: Baseline view. Simple breathing of the hub ──
+      // ── 0–15%: Baseline view. Gentle breathing of the hub ──
       gsap.to(hub, {
-        scale: 1.05,
-        duration: 2,
+        scale: 1.04,
+        duration: 2.2,
         yoyo: true,
         repeat: -1,
         ease: 'sine.inOut',
@@ -129,7 +129,7 @@ export default function Projects() {
         tl.to(path, {
           strokeDashoffset: 0,
           ease: 'power2.inOut',
-        }, 0.15 + (idx * 0.02)); // stagger slightly
+        }, 0.15 + (idx * 0.02));
       });
 
       cardRefs.current.forEach((card, idx) => {
@@ -154,20 +154,20 @@ export default function Projects() {
 
       // ── 55–75%: Continuous Theme Interpolation (Light -> Dark) ──
       tl.to(wrapper, {
-        backgroundColor: '#161008', // dark chocolate black
+        backgroundColor: '#171916',
         ease: 'none',
       }, 0.55);
 
       tl.to(lineRefs.current, {
-        stroke: 'var(--current-color-40)', // Pink accent
+        stroke: '#e5ff3d',
         ease: 'none',
       }, 0.55);
 
       tl.to(hub, {
-        borderColor: 'var(--current-color-40)',
-        backgroundColor: 'rgba(255, 119, 201, 0.05)',
-        boxShadow: '0 0 40px rgba(255, 119, 201, 0.2)',
-        color: '#fcfaf8',
+        borderColor: '#e5ff3d',
+        backgroundColor: '#1d201c',
+        boxShadow: '0 0 40px rgba(229, 255, 61, 0.25)',
+        color: '#f4f2ea',
         ease: 'none',
       }, 0.55);
 
@@ -175,7 +175,14 @@ export default function Projects() {
       const h2 = headerRef.current?.querySelector('h2');
       if (h2) {
         tl.to(h2, {
-          color: '#fcfaf8',
+          color: '#f4f2ea',
+          ease: 'none',
+        }, 0.55);
+      }
+      const eyebrow = headerRef.current?.querySelector('span');
+      if (eyebrow) {
+        tl.to(eyebrow, {
+          color: '#e5ff3d',
           ease: 'none',
         }, 0.55);
       }
@@ -183,12 +190,21 @@ export default function Projects() {
       cardRefs.current.forEach((card) => {
         if (!card) return;
         tl.to(card, {
-          backgroundColor: 'rgba(255, 255, 255, 0.02)',
-          borderColor: 'rgba(255, 119, 201, 0.15)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-          color: '#fcfaf8',
+          backgroundColor: '#1d201c',
+          borderColor: 'rgba(229, 255, 61, 0.2)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+          color: '#f4f2ea',
           ease: 'none',
         }, 0.55);
+
+        const cardH3 = card.querySelector('h3');
+        if (cardH3) {
+          tl.to(cardH3, { color: '#f4f2ea', ease: 'none' }, 0.55);
+        }
+        const cardP = card.querySelector('p');
+        if (cardP) {
+          tl.to(cardP, { color: 'rgba(244, 242, 234, 0.7)', ease: 'none' }, 0.55);
+        }
       });
 
       // ── 75–90%: Compression & final theme settling ──
@@ -273,7 +289,7 @@ export default function Projects() {
         position: 'relative',
         height: '100vh',
         width: '100%',
-        background: '#ECDDFC', // Initial warm light lavender
+        background: '#f4f2ea', // Warm cream background
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
@@ -297,27 +313,29 @@ export default function Projects() {
       >
         <span 
           style={{ 
-            fontFamily: 'ABCReproMono, monospace', 
-            fontSize: '1.1rem', 
-            letterSpacing: '0.15em', 
+            fontFamily: 'var(--font-inter), Inter, sans-serif', 
+            fontSize: '0.85rem', 
+            fontWeight: 600,
+            letterSpacing: '0.14em', 
             textTransform: 'uppercase', 
-            color: 'var(--current-color-40, #ff77c9)', 
+            color: '#50534b', 
             display: 'block', 
-            marginBottom: '1rem' 
+            marginBottom: '1rem',
+            transition: 'color 0.5s ease',
           }}
         >
           Projects Served // Portfolio
         </span>
         <h2 
           style={{ 
-            fontFamily: 'GT-Planar, Inter, sans-serif', 
+            fontFamily: 'var(--font-oswald), Oswald, sans-serif', 
             fontSize: 'clamp(2.4rem, 4.5vw, 4.2rem)', 
             fontWeight: 700, 
             lineHeight: 1.15, 
-            color: '#410060', 
+            color: '#171916', 
             maxWidth: '900px',
             margin: '0 auto',
-            transition: 'color 0.5s ease' 
+            transition: 'color 0.5s ease',
           }}
         >
           Bespoke engineering for high-growth brands.
@@ -355,7 +373,7 @@ export default function Projects() {
               ref={(el) => setLineRef(el, i)}
               d={d}
               fill="none"
-              stroke="#410060" // Initial light purple stroke
+              stroke="rgba(23, 25, 22, 0.2)"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -373,10 +391,10 @@ export default function Projects() {
             width: '200px',
             height: '200px',
             borderRadius: '50%',
-            border: '2px solid #410060',
-            background: 'rgba(65, 0, 96, 0.05)',
-            boxShadow: '0 0 25px rgba(65, 0, 96, 0.1)',
-            color: '#410060',
+            border: '2px solid #171916',
+            background: '#ffffff',
+            boxShadow: '0 8px 30px rgba(23, 25, 22, 0.08)',
+            color: '#171916',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -387,9 +405,9 @@ export default function Projects() {
             transition: 'border-color 0.5s, background-color 0.5s, box-shadow 0.5s, color 0.5s',
           }}
         >
-          <span style={{ fontSize: '1.1rem', fontFamily: 'monospace', letterSpacing: '0.1em', textTransform: 'uppercase', opacity: 0.8 }}>NexGrowth</span>
-          <h4 style={{ fontSize: '1.6rem', fontWeight: 'bold', margin: '0.5rem 0', fontFamily: 'GT-Planar, sans-serif' }}>Projects Served</h4>
-          <span style={{ fontSize: '0.85rem', opacity: 0.7 }}>Bespoke Engineering</span>
+          <span style={{ fontSize: '0.85rem', fontFamily: 'var(--font-inter), Inter, monospace', letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.65 }}>NexGrowth</span>
+          <h4 style={{ fontSize: '1.6rem', fontWeight: 700, margin: '0.5rem 0', fontFamily: 'var(--font-oswald), Oswald, sans-serif' }}>Projects Served</h4>
+          <span style={{ fontSize: '0.85rem', opacity: 0.65, fontFamily: 'var(--font-inter), Inter, sans-serif' }}>Bespoke Engineering</span>
         </div>
 
         {/* Floating Project Nodes */}
@@ -404,12 +422,12 @@ export default function Projects() {
               top: `${cardCoords[i].y}px`,
               width: '260px',
               height: '140px',
-              background: 'rgba(255, 255, 255, 0.85)',
-              border: '1px solid rgba(65, 0, 96, 0.15)',
+              background: '#ffffff',
+              border: '1px solid rgba(23, 25, 22, 0.08)',
               borderRadius: '16px',
               padding: '1.8rem',
-              boxShadow: '0 8px 24px rgba(65, 0, 96, 0.06)',
-              color: '#410060',
+              boxShadow: '0 8px 24px rgba(23, 25, 22, 0.06)',
+              color: '#171916',
               zIndex: 4,
               display: 'flex',
               flexDirection: 'column',
@@ -419,20 +437,36 @@ export default function Projects() {
             }}
             onMouseEnter={e => {
               e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)';
-              e.currentTarget.style.boxShadow = '0 16px 36px rgba(65, 0, 96, 0.14)';
+              e.currentTarget.style.boxShadow = '0 16px 36px rgba(23, 25, 22, 0.12)';
             }}
             onMouseLeave={e => {
               e.currentTarget.style.transform = 'translateY(0) scale(1)';
-              e.currentTarget.style.boxShadow = '0 8px 24px rgba(65, 0, 96, 0.06)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(23, 25, 22, 0.06)';
             }}
             onClick={() => window.open(proj.link, '_blank')}
           >
             <div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span style={{ fontSize: '0.8rem', opacity: 0.6, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{proj.cat}</span>
+                <span style={{ 
+                  fontSize: '0.75rem', 
+                  background: '#171916', 
+                  color: '#e5ff3d', 
+                  padding: '2px 8px', 
+                  borderRadius: '4px', 
+                  fontWeight: 600,
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.06em',
+                  fontFamily: 'var(--font-inter), Inter, sans-serif'
+                }}>
+                  {proj.cat}
+                </span>
               </div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: '0.6rem 0 0.4rem 0', fontFamily: 'GT-Planar, sans-serif' }}>{proj.name}</h3>
-              <p style={{ fontSize: '0.9rem', opacity: 0.75, lineHeight: '1.4', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{proj.desc}</p>
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 700, margin: '0.6rem 0 0.3rem 0', fontFamily: 'var(--font-oswald), Oswald, sans-serif', color: '#171916', transition: 'color 0.5s' }}>
+                {proj.name}
+              </h3>
+              <p style={{ fontSize: '0.88rem', color: '#50534b', lineHeight: '1.45', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', fontFamily: 'var(--font-inter), Inter, sans-serif', transition: 'color 0.5s' }}>
+                {proj.desc}
+              </p>
             </div>
           </div>
         ))}

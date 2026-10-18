@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
-import { Space_Grotesk, PT_Serif } from 'next/font/google';
+import { Space_Grotesk, PT_Serif, Oswald, Inter } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 const spaceGrotesk = Space_Grotesk({
@@ -18,8 +18,22 @@ const ptSerif = PT_Serif({
   display: 'swap',
 });
 
+const oswald = Oswald({
+  subsets: ['latin'],
+  weight: ['700'],
+  variable: '--font-oswald',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nexgrowth.com'),
+  metadataBase: new URL('https://nexgrowth.in'),
   title: 'NexGrowth | B2B Custom Website & Software Development Services',
   description: 'At NexGrowth, we architect digital experiences that breathe life into your brand.',
 };
@@ -28,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${ptSerif.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${ptSerif.variable} ${oswald.variable} ${inter.variable}`}>
       <body>
         <SmoothScroll>{children}</SmoothScroll>
         {gaId && <GoogleAnalytics gaId={gaId} />}

@@ -1,16 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import BookCallModal from '@/components/BookCallModal';
 
 export const metadata: Metadata = {
   title: 'Digital Marketing Agency | B2B Services | NexGrowth',
   description: 'Explore NexGrowth capabilities. We design and engineer custom website development, SaaS web applications, technical SEO, PPC, and organic social marketing.',
   alternates: {
-    canonical: 'https://nexgrowth.com/services',
+    canonical: 'https://nexgrowth.in/services',
   },
   openGraph: {
     title: 'Digital Marketing Agency | B2B Services | NexGrowth',
     description: 'Explore NexGrowth capabilities. We design and engineer custom website development, SaaS web applications, technical SEO, PPC, and organic social marketing.',
-    url: 'https://nexgrowth.com/services',
+    url: 'https://nexgrowth.in/services',
     siteName: 'NexGrowth',
     images: [
       {
@@ -35,6 +38,7 @@ export const metadata: Metadata = {
 const serviceItems = [
   {
     num: '01',
+    shortTag: 'WEB DEV',
     title: 'B2B Custom Website Development',
     keyword: 'Website Development Company',
     desc: 'Bespoke corporate websites and responsive layouts engineered for conversion, search visibility, and maximum brand credibility.',
@@ -42,6 +46,7 @@ const serviceItems = [
   },
   {
     num: '02',
+    shortTag: 'SAAS APPS',
     title: 'Custom Web Application Development',
     keyword: 'Software Development Company',
     desc: 'Tailored SaaS dashboards, customer portal systems, database workflows, and custom enterprise software engineered for business growth.',
@@ -49,27 +54,55 @@ const serviceItems = [
   },
   {
     num: '03',
+    shortTag: 'SHOPIFY & E-COM',
+    title: 'Shopify & E-Commerce Development',
+    keyword: 'Shopify Website Development',
+    desc: 'Custom Shopify Liquid themes, headless Next.js commerce, payment gateway setup, and high-converting checkout funnels.',
+    href: '/services/shopify-development',
+  },
+  {
+    num: '04',
+    shortTag: 'LANDING PAGES',
+    title: 'High-Converting Landing Pages',
+    keyword: 'Landing Page Design Agency',
+    desc: 'PPC and paid social landing pages built with sub-second Next.js speed, conversion copywriting, and full tracking attribution.',
+    href: '/services/landing-page-development',
+  },
+  {
+    num: '05',
+    shortTag: 'REDESIGN',
+    title: 'Website Redesign & Modernization',
+    keyword: 'Website Redesign Company',
+    desc: 'Transforming slow, outdated websites into modern digital platforms with 95+ Core Web Vitals and zero loss in SEO rankings.',
+    href: '/services/website-redesign',
+  },
+  {
+    num: '06',
+    shortTag: 'TECHNICAL SEO',
     title: 'Search Engine Optimisation',
     keyword: 'Technical SEO Services',
     desc: 'Metrics-driven organic visibility campaigns utilizing technical SEO audits, on-page optimization, content strategy, and authority building.',
     href: '/services/seo',
   },
   {
-    num: '04',
+    num: '07',
+    shortTag: 'GOOGLE ADS',
     title: 'Google Ads & PPC Management',
     keyword: 'Google Ads Agency',
     desc: 'Data-driven paid search acquisition setups, keyword bid management, and high-converting copy targeting direct-response ROAS growth.',
     href: '/services/google-ads',
   },
   {
-    num: '05',
+    num: '08',
+    shortTag: 'META ADS',
     title: 'Facebook & Instagram Meta Ads',
     keyword: 'Facebook Ads Agency',
     desc: 'Targeted demographic campaigns, creative display setups, retargeting funnels, and performance monitoring across social networks.',
     href: '/services/meta-ads',
   },
   {
-    num: '06',
+    num: '09',
+    shortTag: 'SMM & CARE',
     title: 'Social Media Marketing (SMM)',
     keyword: 'Social Media Marketing Agency',
     desc: 'Complete social media management, organic Instagram marketing, content scheduling, and community engagement to build brand trust.',
@@ -79,7 +112,7 @@ const serviceItems = [
 
 export default function ServicesDirectoryPage() {
   return (
-    <div style={{ background: '#12071a', color: '#fcfaf8', minHeight: '100vh', padding: '12rem 2rem 8rem' }}>
+    <div style={{ backgroundColor: '#f4f2ea', color: '#171916', minHeight: '100vh', position: 'relative' }}>
       {/* JSON-LD breadcrumb script */}
       <script
         type="application/ld+json"
@@ -87,109 +120,273 @@ export default function ServicesDirectoryPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
-            'itemListElement': [
+            itemListElement: [
               {
                 '@type': 'ListItem',
-                'position': 1,
-                'name': 'Home',
-                'item': 'https://nexgrowth.com'
+                position: 1,
+                name: 'Home',
+                item: 'https://nexgrowth.in',
               },
               {
                 '@type': 'ListItem',
-                'position': 2,
-                'name': 'Services',
-                'item': 'https://nexgrowth.com/services'
-              }
-            ]
-          })
+                position: 2,
+                name: 'Services',
+                item: 'https://nexgrowth.in/services',
+              },
+            ],
+          }),
         }}
       />
 
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        {/* Breadcrumbs */}
-        <nav 
-          aria-label="Breadcrumb"
-          style={{ 
-            marginBottom: '4rem', 
-            fontFamily: 'ABCReproMono, monospace', 
-            fontSize: '0.85rem', 
-            textTransform: 'uppercase', 
-            letterSpacing: '0.08em',
-            color: 'rgba(252,250,248,0.5)'
-          }}
-        >
-          <Link href="/" style={{ color: 'rgba(252,250,248,0.6)', textDecoration: 'none', transition: 'color 0.2s' }}>Home</Link>
-          <span style={{ margin: '0 8px', color: 'rgba(252,250,248,0.3)' }}>&gt;</span>
-          <span style={{ color: 'var(--current-color-40, #ff77c9)' }}>Services</span>
-        </nav>
+      {/* Global Navbar */}
+      <Navbar />
 
-        {/* Hero title */}
-        <div style={{ marginBottom: '6rem' }}>
-          <p style={{ fontFamily: 'ABCReproMono, monospace', fontSize: '0.9rem', color: 'var(--current-color-40, #ff77c9)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>
-            NEXGROWTH CAPABILITIES
-          </p>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: '1.05', maxWidth: '800px', marginBottom: '2rem', fontFamily: 'GT-Planar, sans-serif' }}>
-            Custom B2B Software &amp; Digital Marketing Services
-          </h1>
-          <p style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', lineHeight: '1.6', color: 'rgba(252,250,248,0.7)', maxWidth: '720px', fontFamily: 'GT-Planar, sans-serif', fontWeight: 300 }}>
-            We design, engineer, and optimize custom web applications, responsive websites, and user acquisition pipelines. Select a service to view specialized capabilities and case studies.
-          </p>
-        </div>
+      <main style={{ paddingTop: 'clamp(110px, 14vh, 150px)', paddingBottom: '7rem' }}>
+        <div className="flow-container" style={{ maxWidth: '1180px' }}>
+          {/* Breadcrumbs */}
+          <nav
+            aria-label="Breadcrumb"
+            style={{
+              marginBottom: '2.5rem',
+              fontFamily: 'var(--font-inter), Inter, sans-serif',
+              fontSize: '0.8125rem',
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+              color: '#50534b',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+            }}
+          >
+            <Link href="/" style={{ color: '#50534b', transition: 'color 0.2s' }}>
+              Home
+            </Link>
+            <span style={{ opacity: 0.4 }}>/</span>
+            <span style={{ color: '#171916', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#e5ff3d', display: 'inline-block' }} />
+              Services Directory
+            </span>
+          </nav>
 
-        {/* Grid of services */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', marginBottom: '6rem' }}>
-          {serviceItems.map((s, idx) => (
-            <Link 
-              key={idx} 
-              href={s.href}
+          {/* Hero title */}
+          <div style={{ marginBottom: '4rem', maxWidth: '840px' }}>
+            <div style={{ marginBottom: '1.25rem' }}>
+              <span className="flow-tag">
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#171916' }} />
+                NEXGROWTH CAPABILITIES
+              </span>
+            </div>
+
+            <h1
+              className="font-display"
               style={{
-                textDecoration: 'none',
-                background: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
-                borderRadius: '16px',
-                padding: '2.5rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                transition: 'all 0.3s ease',
+                fontSize: 'clamp(2.5rem, 5.5vw, 4.2rem)',
+                lineHeight: 1.0,
+                fontWeight: 700,
+                color: '#171916',
+                letterSpacing: '-0.025em',
+                marginBottom: '1.5rem',
               }}
             >
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                  <span style={{ fontFamily: 'ABCReproMono, monospace', fontSize: '0.9rem', color: 'rgba(252,250,248,0.3)' }}>
-                    [{s.num}]
-                  </span>
-                  <span style={{ fontFamily: 'ABCReproMono, monospace', fontSize: '0.7rem', textTransform: 'uppercase', color: 'var(--current-color-40, #ff77c9)', background: 'rgba(255,119,201,0.08)', padding: '2px 8px', borderRadius: '4px' }}>
-                    {s.keyword}
+              CUSTOM B2B SOFTWARE &amp; DIGITAL MARKETING SERVICES
+            </h1>
+
+            <p
+              style={{
+                fontFamily: 'var(--font-inter), Inter, sans-serif',
+                fontSize: '1.1875rem',
+                lineHeight: 1.6,
+                color: '#50534b',
+              }}
+            >
+              We design, engineer, and optimize custom web applications, responsive websites, and user acquisition pipelines. Select a service below to explore specialized capabilities, technical blueprints, and delivery roadmaps.
+            </p>
+          </div>
+
+          {/* Grid of services in FlowPilot white card style */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
+              gap: '2rem',
+              marginBottom: '5rem',
+            }}
+          >
+            {serviceItems.map((s, idx) => (
+              <Link
+                key={idx}
+                href={s.href}
+                style={{
+                  textDecoration: 'none',
+                  backgroundColor: '#ffffff',
+                  border: '1px solid rgba(23, 25, 22, 0.08)',
+                  borderRadius: '24px',
+                  padding: '2.5rem 2rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  minHeight: '340px',
+                  transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                  boxShadow: '0 8px 30px rgba(23, 25, 22, 0.03)',
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginBottom: '1.75rem',
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-inter), Inter, sans-serif',
+                        fontSize: '0.8125rem',
+                        fontWeight: 700,
+                        letterSpacing: '0.08em',
+                        color: '#50534b',
+                      }}
+                    >
+                      {s.num} / {s.shortTag}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-inter), Inter, sans-serif',
+                        fontSize: '0.6875rem',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.06em',
+                        color: '#171916',
+                        backgroundColor: '#f4f2ea',
+                        padding: '4px 10px',
+                        borderRadius: '9999px',
+                        border: '1px solid rgba(23, 25, 22, 0.08)',
+                      }}
+                    >
+                      {s.keyword}
+                    </span>
+                  </div>
+
+                  <h2
+                    className="font-display"
+                    style={{
+                      fontSize: '1.65rem',
+                      lineHeight: 1.15,
+                      fontWeight: 700,
+                      color: '#171916',
+                      letterSpacing: '-0.02em',
+                      marginBottom: '1rem',
+                    }}
+                  >
+                    {s.title}
+                  </h2>
+
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-inter), Inter, sans-serif',
+                      fontSize: '0.9375rem',
+                      lineHeight: 1.6,
+                      color: '#50534b',
+                      marginBottom: '2rem',
+                    }}
+                  >
+                    {s.desc}
+                  </p>
+                </div>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    paddingTop: '1.25rem',
+                    borderTop: '1px solid rgba(23, 25, 22, 0.08)',
+                    fontFamily: 'var(--font-inter), Inter, sans-serif',
+                    fontSize: '0.875rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.06em',
+                    color: '#171916',
+                  }}
+                >
+                  <span>Explore Service</span>
+                  <span
+                    style={{
+                      width: '32px',
+                      height: '32px',
+                      borderRadius: '50%',
+                      backgroundColor: '#171916',
+                      color: '#e5ff3d',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '0.9rem',
+                    }}
+                  >
+                    →
                   </span>
                 </div>
-                <h2 style={{ fontFamily: 'GT-Planar, sans-serif', fontSize: '1.7rem', fontWeight: 700, color: '#fcfaf8', marginBottom: '1rem', letterSpacing: '-0.02em' }}>
-                  {s.title}
-                </h2>
-                <p style={{ fontSize: '0.95rem', lineHeight: '1.5', color: 'rgba(252,250,248,0.6)', fontWeight: 300, marginBottom: '2rem' }}>
-                  {s.desc}
-                </p>
-              </div>
-              <span style={{ fontFamily: 'ABCReproMono, monospace', fontSize: '0.8rem', color: 'var(--current-color-40, #ff77c9)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Explore Service &rarr;
-              </span>
-            </Link>
-          ))}
-        </div>
+              </Link>
+            ))}
+          </div>
 
-        {/* Closing Contact section */}
-        <div style={{ borderTop: '1px solid rgba(252,250,248,0.1)', paddingTop: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          <h3 style={{ fontFamily: 'GT-Planar, sans-serif', fontSize: '2rem', fontWeight: 700, marginBottom: '1rem' }}>
-            Ready to scale your digital presence?
-          </h3>
-          <p style={{ color: 'rgba(252,250,248,0.6)', maxWidth: '500px', marginBottom: '2.5rem', fontWeight: 300 }}>
-            Let's discuss how our technical expertise can align with your operational and growth goals.
-          </p>
-          <Link href="/#contact" style={{ padding: '1.2rem 2.8rem', background: '#fcfaf8', color: '#12071a', fontFamily: 'ABCReproMono, monospace', textTransform: 'uppercase', fontSize: '1rem', textDecoration: 'none', borderRadius: '4px', fontWeight: 500 }}>
-            Discuss Your B2B Project
-          </Link>
+          {/* Bottom Call to Action Card */}
+          <div
+            style={{
+              backgroundColor: '#171916',
+              color: '#f4f2ea',
+              borderRadius: '24px',
+              border: '1px solid rgba(244, 242, 234, 0.12)',
+              padding: 'clamp(2.5rem, 5vw, 4rem)',
+              textAlign: 'center',
+              boxShadow: '0 20px 48px rgba(0, 0, 0, 0.25)',
+            }}
+          >
+            <div style={{ marginBottom: '1rem' }}>
+              <span className="flow-tag-dark">
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#e5ff3d' }} />
+                START A CONVERSATION
+              </span>
+            </div>
+            <h2
+              className="font-display"
+              style={{
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                lineHeight: 1.05,
+                fontWeight: 700,
+                color: '#f4f2ea',
+                letterSpacing: '-0.02em',
+                marginBottom: '1rem',
+              }}
+            >
+              READY TO SCALE YOUR DIGITAL PRESENCE?
+            </h2>
+            <p
+              style={{
+                fontFamily: 'var(--font-inter), Inter, sans-serif',
+                fontSize: '1.05rem',
+                lineHeight: 1.6,
+                color: 'rgba(244, 242, 234, 0.7)',
+                maxWidth: '560px',
+                margin: '0 auto 2rem',
+              }}
+            >
+              Let&apos;s discuss how our technical engineering and conversion focus can accelerate your business goals.
+            </p>
+            <Link href="/#contact" className="btn-primary-lime">
+              Discuss Your B2B Project →
+            </Link>
+          </div>
         </div>
-      </div>
+      </main>
+
+      {/* Global Footer */}
+      <Footer />
+
+      {/* Discovery Call Modal */}
+      <BookCallModal />
     </div>
   );
 }
