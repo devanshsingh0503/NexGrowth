@@ -36,6 +36,14 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://nexgrowth.in'),
   title: 'NexGrowth | B2B Custom Website & Software Development Services',
   description: 'At NexGrowth, we architect digital experiences that breathe life into your brand.',
+  icons: {
+    icon: [
+      { url: '/icon.png', sizes: '1024x1024', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
