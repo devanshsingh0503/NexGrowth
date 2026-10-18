@@ -136,7 +136,7 @@ export default function Contact() {
     'Response within 24 hours',
     'NDA available on request',
     'No retainer required',
-    'Fixed-scope pricing',
+    'Fixed-scope deliverables',
   ];
 
   return (
@@ -313,7 +313,7 @@ export default function Contact() {
                 {[
                   'Project scope & feasibility review',
                   'Custom strategy recommendations',
-                  'Transparent, fixed-scope pricing',
+                  'Transparent, fixed-scope proposals',
                 ].map((item, i) => (
                   <li key={i} style={{
                     color: 'rgba(244, 242, 234, 0.7)',

@@ -23,10 +23,10 @@ const packages: PackageTier[] = [
   {
     name: 'STARTER / LAUNCH',
     tagline: 'A little room to begin. Perfect for new brands, MVPs, and rapid validation.',
-    priceProject: '$2,400',
-    priceRetainer: '$1,800',
-    periodProject: 'one-time investment',
-    periodRetainer: 'per month retainer',
+    priceProject: 'Custom Quote',
+    priceRetainer: 'Custom Quote',
+    periodProject: 'tailored to requirements',
+    periodRetainer: 'monthly dedicated support',
     features: [
       'Custom Next.js 16 Corporate Website',
       'Mobile-First Responsive Layout',
@@ -41,10 +41,10 @@ const packages: PackageTier[] = [
   {
     name: 'GROWTH / SCALE',
     tagline: 'For your next good idea. Custom web apps and high-converting B2B platforms.',
-    priceProject: '$4,800',
-    priceRetainer: '$3,500',
-    periodProject: 'one-time investment',
-    periodRetainer: 'per month retainer',
+    priceProject: 'Custom Quote',
+    priceRetainer: 'Custom Quote',
+    periodProject: 'tailored to requirements',
+    periodRetainer: 'monthly dedicated support',
     popular: true,
     features: [
       'Everything in Starter Tier',
@@ -61,10 +61,10 @@ const packages: PackageTier[] = [
   {
     name: 'ENTERPRISE / PARTNER',
     tagline: 'Make space for each other. Dedicated full-stack software engineering team.',
-    priceProject: '$8,500+',
-    priceRetainer: '$5,900',
-    periodProject: 'custom project scope',
-    periodRetainer: 'per month retainer',
+    priceProject: 'Custom Scope',
+    priceRetainer: 'Custom Scope',
+    periodProject: 'tailored to requirements',
+    periodRetainer: 'monthly dedicated support',
     features: [
       'Full-Stack Architecture & Microservices',
       'Dedicated Senior Engineer & Project Manager',

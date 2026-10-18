@@ -674,8 +674,8 @@ export default function Services() {
                     <span style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#e5ff3d', marginTop: '0.4rem', fontFamily: 'var(--font-oswald), sans-serif' }}>5.2x</span>
                   </div>
                   <div className="float-item" style={{ height: '120px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <span style={{ fontSize: '0.75rem', color: 'rgba(244, 242, 234, 0.6)', fontFamily: 'var(--font-inter)' }}>CPA</span>
-                    <span style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#f4f2ea', marginTop: '0.4rem', fontFamily: 'var(--font-oswald), sans-serif' }}>$14.20</span>
+                    <span style={{ fontSize: '0.75rem', color: 'rgba(244, 242, 234, 0.6)', fontFamily: 'var(--font-inter)' }}>Conv. Rate</span>
+                    <span style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#f4f2ea', marginTop: '0.4rem', fontFamily: 'var(--font-oswald), sans-serif' }}>14.2%</span>
                   </div>
                   <div className="float-item" style={{ height: '120px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <span style={{ fontSize: '0.75rem', color: 'rgba(244, 242, 234, 0.6)', fontFamily: 'var(--font-inter)' }}>Search Share</span>

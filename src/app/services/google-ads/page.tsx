@@ -36,7 +36,7 @@ export default function GoogleAdsServicePage() {
   const faqs = [
     {
       q: 'What is a good starting budget for Google Ads campaign management?',
-      a: 'We recommend a starting ad spend budget of at least $1,500 to $2,000 per month to acquire sufficient data to optimize bids.',
+      a: 'We tailor the recommended ad spend to your industry competition and target cost-per-click to ensure sufficient data volume for bid optimization.',
     },
     {
       q: 'Do you build custom landing pages for the ad campaigns?',

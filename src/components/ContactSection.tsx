@@ -13,7 +13,7 @@ export default function ContactSection() {
     name: '',
     email: '',
     projectType: 'Website Design & Development',
-    budget: '$2k – $5k',
+    budget: 'Custom Scope',
     message: '',
   });
 
@@ -99,7 +99,7 @@ export default function ContactSection() {
         name: '',
         email: '',
         projectType: 'Website Design & Development',
-        budget: '$2k – $5k',
+        budget: 'Custom Scope',
         message: '',
       });
     } catch (err: any) {
@@ -377,7 +377,7 @@ export default function ContactSection() {
                       marginBottom: '0.5rem',
                     }}
                   >
-                    Estimated Budget
+                    Project Scope / Engagement
                   </label>
                   <select
                     value={form.budget}
@@ -393,10 +393,11 @@ export default function ContactSection() {
                       outline: 'none',
                     }}
                   >
-                    <option value="$2k – $5k">$2,000 – $5,000 (Starter)</option>
-                    <option value="$5k – $10k">$5,000 – $10,000 (Growth)</option>
-                    <option value="$10k+">$10,000+ (Enterprise)</option>
-                    <option value="Monthly Retainer">Monthly Retainer ($2k – $6k/mo)</option>
+                    <option value="Custom Scope">Custom Scope / Inquire for Proposal</option>
+                    <option value="Starter / MVP">Starter / MVP Launch</option>
+                    <option value="Growth Scale">Growth / Scale Platform</option>
+                    <option value="Enterprise Architecture">Enterprise Solution</option>
+                    <option value="Monthly Retainer">Dedicated Monthly Retainer</option>
                   </select>
                 </div>
               </div>

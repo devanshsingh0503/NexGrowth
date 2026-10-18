@@ -36,7 +36,7 @@ export default function LucknowWebDevelopmentPage() {
   const faqs = [
     {
       q: 'How does NexGrowth support startups in Gomti Nagar?',
-      a: 'We provide scalable pricing packages and robust system architectures designed to handle rapid user base growth.',
+      a: 'We provide scalable engagement models and robust system architectures designed to handle rapid user base growth.',
     },
     {
       q: 'Will my site have localized schema data?',

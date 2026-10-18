@@ -29,7 +29,7 @@ export default function LandingPageDevelopmentPage() {
   const faqs = [
     {
       q: 'Why should I build a custom coded landing page instead of using Unbounce or WordPress?',
-      a: 'Custom Next.js landing pages achieve 95+ Google PageSpeed scores, zero third-party plugin vulnerabilities, instant server responses, and full flexibility for custom CRM webhooks, multi-step forms, and interactive pricing calculators that template builders cannot support.',
+      a: 'Custom Next.js landing pages achieve 95+ Google PageSpeed scores, zero third-party plugin vulnerabilities, instant server responses, and full flexibility for custom CRM webhooks, multi-step forms, and interactive quote calculators that template builders cannot support.',
     },
     {
       q: 'Can you integrate landing page forms with HubSpot, Zoho, or custom webhooks?',
@@ -154,7 +154,7 @@ export default function LandingPageDevelopmentPage() {
       bottomCta={{
         tag: 'LAUNCH TODAY',
         title: 'Ready for a landing page that actually converts?',
-        desc: 'Contact our team for a fast 15-minute consultation to review your campaign and get a fixed-price proposal.',
+        desc: 'Contact our team for a fast 15-minute consultation to review your campaign and get a tailored project proposal.',
         buttonText: 'Get Landing Page Proposal',
         buttonHref: '#contact',
       }}

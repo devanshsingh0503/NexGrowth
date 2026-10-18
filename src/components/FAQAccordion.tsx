@@ -136,7 +136,7 @@ export default function FAQAccordion() {
               lineHeight: 1.6,
             }}
           >
-            Got questions about timelines, technology, or pricing? Here are answers to what clients ask us most often.
+            Got questions about timelines, technology, or engagement models? Here are answers to what clients ask us most often.
           </p>
         </div>
 

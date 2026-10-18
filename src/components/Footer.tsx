@@ -27,7 +27,7 @@ export default function Footer() {
     { name: 'About Us', href: '#services' },
     { name: 'Execution Process', href: '#process' },
     { name: 'Selected Work', href: '#work' },
-    { name: 'Pricing Packages', href: '#packages' },
+    { name: 'Request a Quote', href: '#contact' },
     { name: 'FAQ', href: '#faq' },
     { name: 'Blog & Articles', href: '/blog' },
   ];

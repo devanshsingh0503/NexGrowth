@@ -26,7 +26,7 @@ export default function BlogPage() {
       excerpt: 'A comprehensive breakdown of custom web development costs, developer rates, and tech stacks for Indian startups and global brands.',
       date: 'July 03, 2026',
       readTime: '7 min read',
-      tag: 'Pricing Guides',
+      tag: 'Industry Guides',
     },
     {
       title: 'Website vs Landing Page: Which One Does Your Business Need?',

@@ -44,7 +44,7 @@ export default function MetaAdsServicePage() {
     },
     {
       q: 'What starting budget is recommended for Meta Ads?',
-      a: 'A daily budget of $30 to $50 is a solid starting point to test multiple ad creatives and identify winning audience segments.',
+      a: 'A focused initial testing budget allows us to validate multiple creative variations and identify high-converting audience segments before scaling.',
     },
     {
       q: 'What is lookalike audience targeting in Meta Ads?',
@@ -52,7 +52,7 @@ export default function MetaAdsServicePage() {
     },
     {
       q: 'How do you structure custom retargeting campaigns?',
-      a: 'We target users who viewed your pricing page or products but left before converting, showing them custom video client reviews and social proof.',
+      a: 'We target engaged visitors who explored your core services or products but left before converting, re-engaging them with social proof and video testimonials.',
     },
   ];
 

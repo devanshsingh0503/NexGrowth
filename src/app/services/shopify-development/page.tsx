@@ -119,7 +119,7 @@ export default function ShopifyDevelopmentPage() {
       benefitsList={[
         { tag: 'Speed', title: 'Sub-2 Second Page Loads', desc: 'Optimized product collections and responsive image sizing for smooth mobile browsing.' },
         { tag: 'ROAS', title: 'Higher Ad Conversion Rates', desc: 'Frictionless landing pages designed to maximize paid traffic return from Meta and Google Ads.' },
-        { tag: 'SEO', title: 'Structured Product Schema', desc: 'Built-in product, price, review, and inventory schema for enhanced Google Shopping visibility.' },
+        { tag: 'SEO', title: 'Structured Product Schema', desc: 'Built-in product, offers, review, and inventory schema for enhanced Google Shopping visibility.' },
         { tag: 'Mobile', title: '100% Mobile First UX', desc: 'Sticky add-to-cart, native thumb-zone navigation, and 1-tap payment methods.' },
       ]}
       processTitle="Our Shopify Development Process"
@@ -146,7 +146,7 @@ export default function ShopifyDevelopmentPage() {
       industriesList={[
         { title: 'D2C Brands & Apparel', desc: 'Visual storytelling, size guide popups, and high-converting lookbook layouts.' },
         { title: 'Beauty & Wellness', desc: 'Subscription billing, ingredient disclosures, and customer review widgets.' },
-        { title: 'Electronics & Hardware', desc: 'Technical spec comparison tables, warranty registration, and tier pricing.' },
+        { title: 'Electronics & Hardware', desc: 'Technical spec comparison tables, warranty registration, and volume discounts.' },
         { title: 'Food & Gourmet Beverages', desc: 'Cold chain shipping alerts, batch tracking, and recurrent subscription boxes.' },
       ]}
       faqsTitle="Shopify Development Questions"

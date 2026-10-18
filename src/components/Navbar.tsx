@@ -43,8 +43,8 @@ export default function Navbar() {
     { name: 'SERVICES', href: '#services' },
     { name: 'PROCESS', href: '#process' },
     { name: 'WORK', href: '#work' },
-    { name: 'PACKAGES', href: '#packages' },
     { name: 'FAQ', href: '#faq' },
+    { name: 'CONTACT', href: '#contact' },
   ];
 
   return (
