@@ -8,6 +8,7 @@ import ProcessRhythm from '@/components/ProcessRhythm';
 import PortfolioSection from '@/components/PortfolioSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import FounderAndStats from '@/components/FounderAndStats';
+import PackagesPricing from '@/components/PackagesPricing';
 import FAQAccordion from '@/components/FAQAccordion';
 import ContactSection from '@/components/ContactSection';
 import MarqueeBanner from '@/components/MarqueeBanner';
@@ -271,7 +272,10 @@ export default function Page() {
       {/* 8. Founder Ethos & Animated Stats (WORK IS HUMAN. WE BUILD IT THAT WAY.) */}
       <FounderAndStats />
 
-      {/* 9. FAQ Accordion (A FEW GOOD QUESTIONS.) */}
+      {/* 9. Packages & Scope (PICK YOUR PACE.) */}
+      <PackagesPricing />
+
+      {/* 10. FAQ Accordion (A FEW GOOD QUESTIONS.) */}
       <FAQAccordion />
 
       {/* 11. Contact & Discovery Call (GOOD IDEAS LIKE COMPANY.) */}

@@ -9,10 +9,6 @@ type BillingMode = 'project' | 'retainer';
 interface PackageTier {
   name: string;
   tagline: string;
-  priceProject: string;
-  priceRetainer: string;
-  periodProject: string;
-  periodRetainer: string;
   popular?: boolean;
   features: string[];
   ctaText: string;
@@ -23,10 +19,6 @@ const packages: PackageTier[] = [
   {
     name: 'STARTER / LAUNCH',
     tagline: 'A little room to begin. Perfect for new brands, MVPs, and rapid validation.',
-    priceProject: 'Custom Quote',
-    priceRetainer: 'Custom Quote',
-    periodProject: 'tailored to requirements',
-    periodRetainer: 'monthly dedicated support',
     features: [
       'Custom Next.js 16 Corporate Website',
       'Mobile-First Responsive Layout',
@@ -35,16 +27,12 @@ const packages: PackageTier[] = [
       'Contact Forms & Analytics Tracking',
       '14-Day Delivery Timeline',
     ],
-    ctaText: 'Get Started with Starter',
+    ctaText: 'Contact for Further Info & Price',
     projectType: 'Website Design & Development',
   },
   {
     name: 'GROWTH / SCALE',
     tagline: 'For your next good idea. Custom web apps and high-converting B2B platforms.',
-    priceProject: 'Custom Quote',
-    priceRetainer: 'Custom Quote',
-    periodProject: 'tailored to requirements',
-    periodRetainer: 'monthly dedicated support',
     popular: true,
     features: [
       'Everything in Starter Tier',
@@ -55,16 +43,12 @@ const packages: PackageTier[] = [
       'Google & Meta Conversion API Setup',
       '30-Day Guaranteed Post-Launch Support',
     ],
-    ctaText: 'Explore Growth Plan',
+    ctaText: 'Contact for Further Info & Price',
     projectType: 'SaaS Web Application',
   },
   {
     name: 'ENTERPRISE / PARTNER',
     tagline: 'Make space for each other. Dedicated full-stack software engineering team.',
-    priceProject: 'Custom Scope',
-    priceRetainer: 'Custom Scope',
-    periodProject: 'tailored to requirements',
-    periodRetainer: 'monthly dedicated support',
     features: [
       'Full-Stack Architecture & Microservices',
       'Dedicated Senior Engineer & Project Manager',
@@ -73,7 +57,7 @@ const packages: PackageTier[] = [
       'Continuous Security & Performance Audits',
       'High-Intent Google Ads & Funnel Scaling',
     ],
-    ctaText: 'Contact for Enterprise',
+    ctaText: 'Contact for Further Info & Price',
     projectType: 'Full-Stack Retainer',
   },
 ];
@@ -152,7 +136,7 @@ export default function PackagesPricing() {
                   backgroundColor: '#171916',
                 }}
               />
-              TRANSPARENT PACKAGES
+              PACKAGES &amp; DELIVERABLES
             </span>
           </div>
 
@@ -179,7 +163,7 @@ export default function PackagesPricing() {
               marginBottom: '2rem',
             }}
           >
-            Clear deliverables, guaranteed turnaround, and zero ambiguous hourly billing. Choose fixed project scope or ongoing engineering retainer.
+            Clear deliverables, guaranteed turnaround, and dedicated engineering. Choose fixed-scope sprints or ongoing monthly retainers — contact our engineering team for further info and pricing.
           </p>
 
           {/* Billing Switcher Toggle */}
@@ -206,6 +190,8 @@ export default function PackagesPricing() {
                 backgroundColor: billingMode === 'project' ? '#171916' : 'transparent',
                 color: billingMode === 'project' ? '#e5ff3d' : '#50534b',
                 transition: 'all 0.25s ease',
+                cursor: 'pointer',
+                border: 'none',
               }}
             >
               Project-Based
@@ -223,6 +209,8 @@ export default function PackagesPricing() {
                 backgroundColor: billingMode === 'retainer' ? '#171916' : 'transparent',
                 color: billingMode === 'retainer' ? '#e5ff3d' : '#50534b',
                 transition: 'all 0.25s ease',
+                cursor: 'pointer',
+                border: 'none',
               }}
             >
               Monthly Retainer
@@ -241,9 +229,6 @@ export default function PackagesPricing() {
           }}
         >
           {packages.map((pkg, idx) => {
-            const price = billingMode === 'project' ? pkg.priceProject : pkg.priceRetainer;
-            const period = billingMode === 'project' ? pkg.periodProject : pkg.periodRetainer;
-
             return (
               <div
                 key={idx}
@@ -322,19 +307,20 @@ export default function PackagesPricing() {
                     {pkg.tagline}
                   </p>
 
-                  {/* Price */}
+                  {/* Price & Info Block */}
                   <div style={{ marginBottom: '2rem' }}>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
                       <span
                         className="font-display"
                         style={{
-                          fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
+                          fontSize: 'clamp(1.75rem, 2.6vw, 2.25rem)',
                           fontWeight: 700,
                           color: pkg.popular ? '#e5ff3d' : '#171916',
-                          lineHeight: 1,
+                          lineHeight: 1.1,
+                          letterSpacing: '-0.02em',
                         }}
                       >
-                        {price}
+                        Contact for Price
                       </span>
                     </div>
                     <span
@@ -344,10 +330,14 @@ export default function PackagesPricing() {
                         fontWeight: 600,
                         textTransform: 'uppercase',
                         letterSpacing: '0.06em',
-                        color: pkg.popular ? 'rgba(244, 242, 234, 0.5)' : 'rgba(23, 25, 22, 0.5)',
+                        color: pkg.popular ? 'rgba(244, 242, 234, 0.55)' : 'rgba(23, 25, 22, 0.55)',
+                        display: 'inline-block',
+                        marginTop: '0.4rem',
                       }}
                     >
-                      {period}
+                      {billingMode === 'project'
+                        ? 'Project-Based Scope · Contact for Further Info & Price'
+                        : 'Monthly Retainer · Contact for Further Info & Price'}
                     </span>
                   </div>
 
@@ -411,6 +401,7 @@ export default function PackagesPricing() {
                     justifyContent: 'center',
                     padding: '0.9rem',
                     fontSize: '0.9375rem',
+                    textAlign: 'center',
                   }}
                 >
                   {pkg.ctaText}
