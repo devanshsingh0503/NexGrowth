@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -11,6 +12,7 @@ export default function Hero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
+  const visualRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -60,6 +62,25 @@ export default function Hero() {
           { opacity: 1, duration: 1, clearProps: 'opacity' },
           '-=0.2'
         );
+      }
+
+      if (visualRef.current) {
+        tl.fromTo(
+          visualRef.current,
+          { x: 50, opacity: 0, scale: 0.94 },
+          { x: 0, opacity: 1, scale: 1, duration: 1.1, ease: 'power3.out' },
+          '-=0.8'
+        );
+
+        gsap.to(visualRef.current, {
+          y: 70,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.5,
+          },
+        });
       }
 
       // ── Scroll-based Editorial Parallax (Drift without fading out text) ──
@@ -126,7 +147,54 @@ export default function Hero() {
         overflow: 'hidden',
       }}
     >
-      <div className="flow-container">
+      {/* Editorial Architectural 3D Sculpture Visual */}
+      <div
+        ref={visualRef}
+        className="hero-sculpture-wrap"
+        style={{
+          position: 'absolute',
+          top: 'clamp(20px, 6vh, 80px)',
+          right: 'max(-40px, calc((100vw - 1440px) / 2 - 40px))',
+          width: 'clamp(360px, 50vw, 780px)',
+          height: 'clamp(460px, 72vh, 800px)',
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}
+      >
+        <Image
+          src="/hero-sculpture.webp"
+          alt="NexGrowth Digital Product Architecture"
+          fill
+          priority
+          sizes="(max-width: 900px) 360px, 780px"
+          style={{
+            objectFit: 'contain',
+            objectPosition: 'right center',
+          }}
+        />
+        {/* Soft edge masks to blend 100% seamlessly into #f4f2ea on all screens */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to right, #f4f2ea 0%, rgba(244, 242, 234, 0.45) 20%, transparent 55%)',
+            pointerEvents: 'none',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: '100px',
+            background: 'linear-gradient(to top, #f4f2ea 0%, transparent 100%)',
+            pointerEvents: 'none',
+          }}
+        />
+      </div>
+
+      <div className="flow-container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Eyebrow Tag Pill */}
         <div ref={tagRef} style={{ marginBottom: '1.75rem' }}>
           <div className="flow-tag">

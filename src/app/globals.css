@@ -205,3 +205,17 @@ input, textarea, select {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(23, 25, 22, 0.35);
 }
+
+/* ── Hero Background Sculpture ── */
+.hero-sculpture-wrap {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+@media (max-width: 900px) {
+  .hero-sculpture-wrap {
+    opacity: 0.2 !important;
+    right: -100px !important;
+    transform: scale(0.85);
+    transform-origin: right center;
+  }
+}
